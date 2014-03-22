@@ -9,7 +9,7 @@ tagline: Trying to technology as hard as I can
 
 ## Things I'm working on
 <ul class="projects">
-	[MKBathrooms](http://kyledavidsonpro.github.io/MKBathrooms/)
+	<a href="/MKBathrooms/">MKBathrooms</a>
 </ul>
     
 ## Ramblings
