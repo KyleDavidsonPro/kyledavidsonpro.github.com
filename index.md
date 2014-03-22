@@ -6,6 +6,11 @@ tagline: Trying to technology as hard as I can
 {% include JB/setup %}
 
 "On the internet, noone knows you're a dog"
+
+## Things I'm working on
+<ul class="projects">
+	[MKBathrooms](http://kyledavidsonpro.github.io/MKBathrooms/)
+</ul>
     
 ## Ramblings
 
