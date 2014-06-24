@@ -8,7 +8,7 @@ tagline: Trying to technology as hard as I can
 "On the internet, noone knows you're a dog"
 
 ## Things I'm working on
-<ul class="projects">
+<ul>
 	<a href="/MKBathrooms/">MKBathrooms</a>
 </ul>
     
