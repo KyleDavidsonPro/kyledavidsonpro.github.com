@@ -8,4 +8,4 @@ tags: [intro, me, programming, life, thoughts]
 ---
 {% include JB/setup %}
 
-![Yep]({{ site.url }}/assets/responsbility.gif)
+![Yep]({{ site.url }}/assets/responsibility.gif)
