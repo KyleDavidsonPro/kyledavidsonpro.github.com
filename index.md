@@ -5,7 +5,7 @@ tagline: Colour my hair, do what I dare
 ---
 {% include JB/setup %}
 
-"On the internet, noone knows you're a dog"
+Software Engineer @[Kainos](http://kainos.com). You can catch me on [Twitter](https://twitter.com/KyleDavidsonPro). Or for further details [Linkedin](https://www.linkedin.com/in/kyledavidsonpro).
 
 ## Ramblings
 <ul class="posts">
