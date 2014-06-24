@@ -18,4 +18,3 @@ Software Engineer @[Kainos](http://kainos.com). You can catch me on [Twitter](ht
 <ul>
 	<li><a href="/Plumbyard/">Plumbyard - A local plumbing supplies website</a></li>
 </ul>
-    

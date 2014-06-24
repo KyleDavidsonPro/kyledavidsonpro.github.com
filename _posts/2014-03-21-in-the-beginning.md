@@ -4,7 +4,7 @@ title: "In the beginning"
 description: "First"
 tagline: "I created a blog I guess..."
 category: self
-tags: [intro, me, programming, fitness, life, thoughts]
+tags: [intro, me, programming, life, thoughts]
 ---
 {% include JB/setup %}
 
