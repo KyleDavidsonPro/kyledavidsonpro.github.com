@@ -8,6 +8,4 @@ tags: [programming, health]
 ---
 {% include JB/setup %}
 
-![Yep]({{ site.url }}/assets/responsibility.gif)
-
 #Post to come
