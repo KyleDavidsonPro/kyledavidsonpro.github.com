@@ -10,7 +10,7 @@ tags: [programming, technology]
 
 ##Welcome to the World of Tomorrow!
 
-This weekend Kainos let me take home a pair of Google Glass for the week to try out the dev kit and play about, there's been talk of a Google Glass
+This weekend the R&D team at Kainos let me take home a pair of Google Glass for the week to try out the dev kit and play about, there's been talk of a Google Glass
 hackathon and for this weekend it's good to see how quick development is to pick up for someone without an Android background.
 However, first and foremost it's a sweet ass pair of James Bond glasses so...
 
@@ -39,6 +39,8 @@ smooth experience getting started on Glass.
 
 If you're looking for a decent resource to get started, best bet is [Glass Developer Docs](https://developers.google.com/glass/).   
 
-In regards to a hackathon, I think there's plenty of applicability for Glassware, especially for health related applications. I have to say I feel like it takes a few hours to get
-comfortable with the technology and getting set up with a dev environment etc. But, these things are expected. None the less, I think there will be a lot of interest
-for a hack day with Glass.
+I have to say I feel like it takes a few hours to get comfortable with the technology and getting set up with a dev environment etc.
+But, these things are expected. None the less, I think there will be a lot of interest
+for a hack day with Glass. There's plenty of applicability for Glassware, especially for health related applications. In fact,
+[Ali Rawashdeh](https://twitter.com/al1ra/status/485753878030585856) has been building Glassware for those affected by colour blindness! Just one
+of many possibilities.
