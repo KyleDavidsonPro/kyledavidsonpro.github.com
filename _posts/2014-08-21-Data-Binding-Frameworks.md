@@ -20,7 +20,7 @@ navigating through a site by accessing different html pages through the url, e.g
 the hash fragment of the URL changes e.g. mysite.com#/about. In this case, we'll still change the behaviour of the page in regards to what we see, but the page itself stays the same and doesn't reload.   
 
 ##How it works
-So these frameworks follow the MVC model and I guess generally there is 3 key parts/concepts you should understand:
+So these frameworks follow the MVC pattern and generally there are 3 key parts/concepts you should understand:
 <ol>
 <li>Routing: This involves updating the page in response to the URL hash</li>
 <li>Templating: Expressing views with a templating language, for example Handlebars.js</li>
