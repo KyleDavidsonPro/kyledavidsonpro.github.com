@@ -12,7 +12,7 @@ tags: [programming, technology]
 
 If you're not very familiar with Angular, directives are essentially tags you can apply to a DOM element that tell Angular JS's html compiler to attach a specified behaviour to it. For example we could use one of the following:
 <script src="https://gist.github.com/KyleDavidsonPro/2acb0a4c20cbc0d2ffdc.js"></script>
-In this case we would have created a directive called myForm which could have an associated controller, html template and its own scope. There is a restrict property on directives that defines how you can trigger it, so by default we can use an attribute or an element but you can also match against class name. Typically you'd want to use an element when you are creating a component that is in control of the template and an attribute when you are decorating an existing element with new functionality.
+In this case we would have created a directive called myForm which could have an associated controller, html template and its own scope. There is a restrict property on directives that defines how you can trigger it, so by default we can use an attribute or an element but you can also match against class name. Typically you'd want to use an element when you are creating a component that is in control of the template and an attribute when you are decorating an existing element with new functionality, but of course it all depends on your project needs.
 
 ##The Scenario
 Ok so you want to build a form in Angular.js, this is easy to accomplish but gets more complicated when the fields are dynamic. We want to be able to provide data about our fields e.g. key, type, label etc to Angular, and build a form using this information. The way we get the data isn't important, for the sake of this example we'll assume we get the following JSON back from a service.
@@ -36,7 +36,7 @@ What we want to do here is loop through the field objects in our array response,
 At each iteration, we pass the field object into our directive, along with an object to keep track of all the form data that gets entered. So what you're left with when the user completes the form is an object that contains keys for each field, along with values from what the user has entered. This is particularly useful because we're using an isolated scope for our field directive, that is, the directive definition looks like this:
 
 <script src="https://gist.github.com/KyleDavidsonPro/b807657ded3e49294665.js"></script>
-It's worth discussing scope because it can cause a lot of confusion for those new to Angular. You can define your directive's scope as one of the following:
+It's worth discussing scope because it can cause a lot of confusion for those new to Angular, especially when working with directives like ng-repeat. You can find a great explanation on scopes [here](https://github.com/angular/angular.js/wiki/Understanding-Scopes). You can define your directive's scope as one of the following:
 <ol>
 	<li><b>False (default)</b>: The directive does not create a new scope. Do not use this when designing reusable directives,
 		you want a reusable component to be independant of the outside world, you should be able to plug it in anywhere in your app
