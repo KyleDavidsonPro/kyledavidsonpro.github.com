@@ -22,4 +22,4 @@ My philosophy on the 'correct' way to do things is that you should go with the t
 
 ##The Problem with Storyboards (before iOS 9)
 It's important to note a storyboard is a single file internally represented by XML therefore if you have multiple people working in parellel on the same storyboard file, merge conflicts will be inevitable and not easily resolved. As a very simple example, imagine developer-a and developer-b branch off from master and both make changes to the same storyboard file, these could be changes as simple as changing the position of the same label or adding different layout guides through Interface Builder, this would result in a merge conflict when the sync up like so:
-<script src="https://gist.github.com/KyleDavidsonPro/e0acbcdef154d9ecf68f"></script>
+<script src="https://gist.github.com/KyleDavidsonPro/e0acbcdef154d9ecf68f.js"></script>
