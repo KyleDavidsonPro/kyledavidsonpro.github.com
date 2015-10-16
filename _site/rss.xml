@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+        <title>Kyle Davidson</title>
+        <description>Kyle Davidson - Kyle Davidson</description>
+        <link>http://kyledavidsonpro.github.io</link>
+        <link>http://kyledavidsonpro.github.io</link>
+        <lastBuildDate>2015-10-16T12:00:02+01:00</lastBuildDate>
+        <pubDate>2015-10-16T12:00:02+01:00</pubDate>
+        <ttl>1800</ttl>
+
+
+        <item>
+                <title>Maintaining Large Applications with Storyboards</title>
+                <description>
+&lt;h2 id=&quot;building-uis-in-ios-development&quot;&gt;Building UIs in iOS Development&lt;/h2&gt;
+
+&lt;p&gt;When it comes to designing the views in your application, there are 3 approaches at your disposal:&lt;/p&gt;
+
+&lt;ol&gt;
+	&lt;li&gt;&lt;b&gt;Code&lt;/b&gt;: As you would expect, creating and handling all your visual component&#39;s as well as their positioning, animations and so on, via code. Unless there is a very specific requirement that would force you to do this you really shouldn&#39;t. In general, hand coded UIs are tedious, increase the amount of tests required, difficult to refactor and aren&#39;t really tangible compared to the visual tools at your disposal.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;NIBs/XIBs&lt;/b&gt;: With nib files, you create and manipulate your user interfaces graphically, using Xcode, instead of programmatically. Because you can see the results of your changes instantly, you can experiment with different layouts and configurations very quickly. You can also change many aspects of your user interface later without rewriting any code. This has been a favourite approach for many and generally successful in larger projects.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;Storyboards&lt;/b&gt;: While NIBs give the ability to visually represent individual views, storyboards are a visual tool for laying out not only multiple views but also representing the navigation between them. Since their introduction in iOS 5 storyboards have become ever more popular and the recommended way to design the user interface of your application because they enable you to visualize the appearance and flow of your whole application on one canvas&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;My stance on the ‘correct’ way to do things is that you should go with the trend of the company whose technology you are using. Since Xcode 5 the default project type uses storyboards, every single demo in last year’s WWDC used storyboards, there’s even more functionality available for visual objects in storyboards than there is in NIB files.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-story-with-storyboards&quot;&gt;The Story with Storyboards&lt;/h2&gt;
+
+&lt;p&gt;It’s important to note a storyboard is a single file internally represented by XML therefore if you have multiple people working in parallel on the same storyboard file, merge conflicts will be inevitable and not easily resolved. As a very simple example, imagine developer-a and developer-b branch off from master and both make changes to the same storyboard file, even something as simple as changing the position of a label would result in a merge conflict when they sync up:
+&lt;script src=&quot;https://gist.github.com/KyleDavidsonPro/e0acbcdef154d9ecf68f.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;You could imagine that in a large project with multiple developers these conflicts would get out of hand and be practically impossible to successfully resolve without choosing one set of changes over the other. So how do we deal with this?&lt;/p&gt;
+
+&lt;h2 id=&quot;break-up-your-storyboards&quot;&gt;Break Up Your Storyboards&lt;/h2&gt;
+
+&lt;p&gt;When it comes to large apps with a bunch of features it would be much better to split out the UI into several storyboards depending on the natural sections/modules of your application. With multiple storyboards the application will be easier to manage and reduces the chance of merge conflicts as you can coordinate work on particular parts of the UI more easily. However this raises the question of how to connect each storyboard together. Before iOS 9 this would typically be done via code like so:
+&lt;script src=&quot;https://gist.github.com/KyleDavidsonPro/e6abdf42476725e9a4b1.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Obviously the problem with this is that we’re making the connection via code and therefore it’s not clear how each of the storyboards in your application are connected without knowing the code base, well with iOS 9 came a better way, Storyboard References.&lt;/p&gt;
+
+&lt;h2 id=&quot;ios-9-storyboard-references&quot;&gt;iOS 9 Storyboard References&lt;/h2&gt;
+&lt;p&gt;As an example let’s create a new tabbed application using the default Xcode template and take a look at the main storyboard file that is created for us.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/Tab Bar Storyboard.png&quot; alt=&quot;Initial Storyboard&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Since this is a tab bar application it’s likely each tab will encompass a hierarchy of views and UI components. In this case it’s easy to identify the natural modules/sections of the UI since it’s really just each tab, we can therefore begin to split the application up into multiple storyboards. This is known as Refactoring. You can select views in an existing storyboard to be refactored out into a new storyboard by highlighting them and selecting Xcode’s &lt;b&gt;Editor&lt;/b&gt; menu &amp;gt; &lt;b&gt;Refactor to Storyboard&lt;/b&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/Refactor to Storyboard.png&quot; alt=&quot;Refactor Storyboard&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This will prompt you to give a name for the new Storyboard file that will be created, in my case &lt;b&gt;FirstTab.storyboard&lt;/b&gt; and then it will move the selected views to the new storyboard and insert a storyboard reference in the original storyboard.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/Storyboard Reference.png&quot; alt=&quot;Storyboard Reference&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you double click the storyboard reference it will take you to the storyboard file associated with that reference. As well as refactoring existing views into new storyboards you can also create storyboards from scratch and reference them later, for example if we created a new Storyboard file for a new tab in our application called &lt;b&gt;ThirdTab.storyboard&lt;/b&gt; and gave it a view controller it might look something like this.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/Third Tab.png&quot; alt=&quot;Third Tab&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;i&gt;Note the View Controller’s properties panel on the right hand side where I’ve checked &lt;b&gt;Is Initial View Controller&lt;/b&gt;, this creates a &lt;b&gt;Storyboard Entry Point&lt;/b&gt; so that any storyboard reference will by default instantiate this view controller when triggered. You can link to other scenes in the storyboard rather than the initial view controller by setting the &lt;b&gt;Storyboard ID&lt;/b&gt; in the Identity Inspector for the view controller you wish to instantiate, however the default will do for this example&lt;/i&gt;&lt;/p&gt;
+
+&lt;p&gt;With the storyboard for our third tab created we can then drag in a new Storyboard Reference in &lt;b&gt;Main.storyboard&lt;/b&gt; from the Object Library.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/Object Library.png&quot; alt=&quot;Object Library&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can set the storyboard associated by the storyboard reference by selecting it and choosing the new storyboard from the dropdown.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/Set Storyboard.png&quot; alt=&quot;Set Storyboard&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then all that’s left to do is to Ctrl + Drag from the Tab Bar Controller to our Storyboard Reference to connect them with a Relationship Segue.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/Set Relationship.png&quot; alt=&quot;Set Relationship&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This creates a new tab on the tab bar for us and Voilà!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/Final Storyboard.png&quot; alt=&quot;Final Storyboard&quot; /&gt;&lt;/p&gt;
+</description>
+                <link>http://kyledavidsonpro.github.io/technology/2015/09/07/Building-And-Organizing-Large-Projects-With-Storyboards</link>
+                <guid>http://kyledavidsonpro.github.io/technology/2015/09/07/Building-And-Organizing-Large-Projects-With-Storyboards</guid>
+                <pubDate>2015-09-07T00:00:00+01:00</pubDate>
+        </item>
+
+        <item>
+                <title>Building Dynamic Forms with Angular</title>
+                <description>
+&lt;h2 id=&quot;a-bit-about-custom-directives&quot;&gt;A bit about Custom Directives&lt;/h2&gt;
+
+&lt;p&gt;If you’re not very familiar with Angular, directives are essentially tags you can apply to a DOM element that tell Angular JS’s html compiler to attach a specified behaviour to it. For example we could use one of the following:
+&lt;script src=&quot;https://gist.github.com/KyleDavidsonPro/2acb0a4c20cbc0d2ffdc.js&quot;&gt;&lt;/script&gt;
+In this case we would have created a directive called myForm which could have an associated controller, html template and its own scope. There is a restrict property on directives that defines how you can trigger it, so by default we can use an attribute or an element but you can also match against class name. Typically you’d want to use an element when you are creating a component that is in control of the template and an attribute when you are decorating an existing element with new functionality, but of course it all depends on your project needs.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-scenario&quot;&gt;The Scenario&lt;/h2&gt;
+&lt;p&gt;Ok so you want to build a form in Angular.js, this is easy to accomplish but gets more complicated when the fields are dynamic. We want to be able to provide data about our fields e.g. key, type, label etc to Angular, and build a form using this information. The way we get the data isn’t important, for the sake of this example we’ll assume we get the following JSON back from a service.
+&lt;script src=&quot;https://gist.github.com/KyleDavidsonPro/16a3f98c502787132786.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Once our data comes back from some service we can use directives to build our form.&lt;/p&gt;
+
+&lt;h2 id=&quot;designing-directives&quot;&gt;Designing Directives&lt;/h2&gt;
+&lt;p&gt;When naming your directives: use a unique prefix. Try not to name your directives ng-something, as to others this would suggest it is an internal Angular directive, just use something appropriate to what you’re working on and keep it to the convential two-letters, for our project at Kainos Smart I went with sm-*.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Side note when you name a directive in Javascript you use camelCase, but in html you use it with a hyphen like camel-case&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Secondly, in regards to the template associated with your directive, you can either use &lt;b&gt;template&lt;/b&gt; (define the HTML in Javascript) or you can use &lt;b&gt;templateUrl&lt;/b&gt; (a URL to an HTML partial). I personally prefer the latter, there’s more work involved in testing it that way because you need to preload the templates into the &lt;b&gt;$templateCache&lt;/b&gt; for tests but it’s definitely my go-to. Also depending on your needs you can avoid the round trip to the server with templateUrl by using script tags with an id, there’s some trades off there but it’s an option none the less.&lt;/p&gt;
+
+&lt;p&gt;Lets take a look at the first outer most directive, smField.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-field-directive&quot;&gt;The Field Directive&lt;/h2&gt;
+&lt;p&gt;What we want to do here is loop through the field objects in our array response, and build a field directive each time.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/KyleDavidsonPro/2c88c58d7098ca69c288.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;At each iteration, we pass the field object into our directive, along with an object to keep track of all the form data that gets entered. So what you’re left with when the user completes the form is an object that contains keys for each field, along with values from what the user has entered. This is particularly useful because we’re using an isolated scope for our field directive, that is, the directive definition looks like this:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/KyleDavidsonPro/b807657ded3e49294665.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;It’s worth discussing scope because it can cause a lot of confusion for those new to Angular, especially when working with directives like ng-repeat. You can find a great explanation on scopes &lt;a href=&quot;https://github.com/angular/angular.js/wiki/Understanding-Scopes&quot;&gt;here&lt;/a&gt;. You can define your directive’s scope as one of the following:&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;&lt;b&gt;False (default)&lt;/b&gt;: The directive does not create a new scope. Do not use this when designing reusable directives,
+		you want a reusable component to be independant of the outside world, you should be able to plug it in anywhere in your app
+		without relying on or effecting existing scope properties.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;True&lt;/b&gt;: The directive creates a new child scope that prototypically inherits from the parent scope. &lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;{}&lt;/b&gt;: Directive gets a new isolated scope completey detached from the parent scope. This is the favourable choice here as it means our form can be built up in any part of the application without interfering with the parent scope.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The directive communicates to the parent scope to get the properties it needs by defining them on the object using special symbols known as &lt;em&gt;prefixes&lt;/em&gt;. There are 3 types of prefixes:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;&lt;b&gt;@&lt;/b&gt;: Text Binding. Whatever is passed in is parsed and returned as a string.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;&amp;amp;&lt;/b&gt;: One Way Binding. Allows a directive to trigger evaluation of an expression in the context of the original scope, at a specific time. Any legal expression is allowed, including an expression which contains a function call. Because of this, &amp;amp; bindings are ideal for binding callback functions to directive behaviors.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;=&lt;/b&gt;: Two way Data Binding. Any changes to the bound value are reflected in all scopes. &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Our sm-field’s template looks like this:
+&lt;script src=&quot;https://gist.github.com/KyleDavidsonPro/8041371a6fbbdc950873.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;We use ng-switch to conditionally build a child directive depending on the type of field. At Kainos Smart we have custom directives for many types of form-inputs in which we extend the functionality and provide some custom features, as well as defining some of our own form field types, like a typeahead that queries the Workday API. As you can see these child directives don’t have any attributes to pass in data, that’s because they’re scopes are defined as true, thus inheriting the field and formData objects.&lt;/p&gt;
+
+&lt;p&gt;Lastly, I will show what the sm-text directive might look like as a very simple text-input with no additional functionality.
+&lt;script src=&quot;https://gist.github.com/KyleDavidsonPro/5a0aa51ed8446b9ac7ee.js&quot;&gt;&lt;/script&gt;
+We use formData[field.key] as the model for the input, so if our field key was ‘firstName’ our formData object would have a key-value pair such as &lt;b&gt;firstName: “whatever the user enters”.&lt;/b&gt; that is accessible from formData.firstName, This works well for us as Smart has a repeatable field type which recursively calls the initial &lt;b&gt;sm-field&lt;/b&gt; directive to allow repeatable form sections. So with a completed form we have a nice neat object that can be validated. It might look something like:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/KyleDavidsonPro/4affc81df1e4582b9025.js&quot;&gt;&lt;/script&gt;
+
+</description>
+                <link>http://kyledavidsonpro.github.io/technology/2014/12/07/Building-Dynamic-Forms-with-Angular-Directives</link>
+                <guid>http://kyledavidsonpro.github.io/technology/2014/12/07/Building-Dynamic-Forms-with-Angular-Directives</guid>
+                <pubDate>2014-12-07T00:00:00+00:00</pubDate>
+        </item>
+
+        <item>
+                <title>Data-Binding Frameworks</title>
+                <description>
+&lt;h2 id=&quot;data-what-frameworks&quot;&gt;Data what frameworks?&lt;/h2&gt;
+
+&lt;p&gt;What indeed! I’ve recently been looking into some Javascript frameworks that fall under this category of ‘data binding’. Having focused primarily on iOS development for
+the past 2ish years I’d consider myself out of the loop when it comes to web dev. So hopefully if you’re like me and haven’t had much exposure to web technologies you
+may find some use in this post!&lt;/p&gt;
+
+&lt;p&gt;I’m working on a project that uses &lt;a href=&quot;https://angularjs.org/&quot;&gt;Angular.js&lt;/a&gt; in parts of the front end and was asked to look into &lt;a href=&quot;http://emberjs.com/&quot;&gt;Ember.js&lt;/a&gt; as an alternative.
+If you’re wondering what these things are they’re basically Javascript frameworks used primarily for single page applications. What I mean by single page applications is, instead of
+navigating through a site by accessing different html pages through the url, e.g. mysite.com/about would render about.html, a single page application instead uses a single html file and only
+the hash fragment of the URL changes e.g. mysite.com#/about. In this case, we’ll still change the behaviour of the page in regards to what we see, but the page itself stays the same and doesn’t reload.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-it-works&quot;&gt;How it works&lt;/h2&gt;
+&lt;p&gt;So these frameworks follow the MVC pattern and generally there are 3 key parts/concepts you should understand:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Routing: This involves updating the page in response to the URL hash&lt;/li&gt;
+&lt;li&gt;Templating: Expressing views with a templating language, for example Handlebars.js&lt;/li&gt;
+&lt;li&gt;Data Binding: Maintaining a synchronization between the model and the view&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You can do some really cool things with these frameworks in a crazy low amount of code. Ember for example has a &lt;a href=&quot;http://emberjs.com/guides/models/the-rest-adapter/&quot;&gt;REST Adapter&lt;/a&gt; that provides
+a way to work with your model through your REST api without having to write any boilerplate. The most popular frameworks are arguably:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Angular&lt;/li&gt;
+&lt;li&gt;Ember&lt;/li&gt;
+&lt;li&gt;Knockout&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;All of which are great to work with and achieve generally the same thing, there’s a popular Ember vs Angular debate but to be honest it really falls down to your
+preferences in most cases. My personal preference is probably Ember because of their convention principles but that’s not to say I don’t like Angular.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-now&quot;&gt;What now?&lt;/h2&gt;
+&lt;p&gt;Go try them out when you get some time! I don’t want to get into coding examples and that kind of stuff in this blog, I’ll be doing a Codeslice on Ember.JS on 28th August
+which will hopefully be recorded and I can edit this post to include at a later date!&lt;/p&gt;
+</description>
+                <link>http://kyledavidsonpro.github.io/technology/2014/08/21/Data-Binding-Frameworks</link>
+                <guid>http://kyledavidsonpro.github.io/technology/2014/08/21/Data-Binding-Frameworks</guid>
+                <pubDate>2014-08-21T00:00:00+01:00</pubDate>
+        </item>
+
+        <item>
+                <title>Google Glass</title>
+                <description>
+&lt;h2 id=&quot;welcome-to-the-world-of-tomorrow&quot;&gt;Welcome to the World of Tomorrow!&lt;/h2&gt;
+
+&lt;p&gt;This weekend the R&amp;amp;D team at Kainos let me take home a pair of Google Glass for the week to try out the dev kit and play about, there’s been talk of a Google Glass
+hackathon and for this weekend it’s good to see how quick development is to pick up for someone without an Android background.
+However, first and foremost it’s a sweet ass pair of James Bond glasses so…&lt;/p&gt;
+
+&lt;h2 id=&quot;the-product&quot;&gt;The Product&lt;/h2&gt;
+&lt;p&gt;In all honesty I never really looked into much stuff around Glass, I had a vague idea of what it was and I was quite surprised about how they actually look.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Warning: Incoming Selfies&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/Glass1.jpg&quot; alt=&quot;Glass&quot; height=&quot;124&quot; width=&quot;124&quot; /&gt;
+&lt;img src=&quot;/assets/Glass2.jpg&quot; alt=&quot;Me with Google Glass&quot; height=&quot;124&quot; width=&quot;124&quot; /&gt;
+&lt;img src=&quot;/assets/Glass3.jpg&quot; alt=&quot;Me with normal Glasses&quot; height=&quot;124&quot; width=&quot;124&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So if it isn’t obvious, from left to right, the Google Glasses, me wearing the Google Glasses, and me wearing my normal glasses. So to be fair,
+they look &lt;em&gt;alright&lt;/em&gt;, but I think right now if you were to walk around in Belfast with them people would inform you that you look like a pleb. I love the idea
+of having your prescription lenses on the Google Glass though and if you’re into wearable technology, why not.&lt;/p&gt;
+
+&lt;p&gt;What was most surprising to me was the actual size of the screen when you’re wearing the glasses, it’s actually pretty small. I find the text hard to read and
+it took me a while to get used to the gestures. Though I have to say the voice recognition on it is solid, I didn’t feel like I had to speak differently for it
+to register the correct words, I can just talk with my mumbled accent and it knows what’s up. Probably my favourite thing about it though is the ability
+to take pictures and record video, because for all the size of it, the camera is pretty damn good.&lt;/p&gt;
+
+&lt;h2 id=&quot;google-glass-development&quot;&gt;Google Glass Development&lt;/h2&gt;
+&lt;p&gt;So if you’re looking to build native apps, or ‘Glassware’ for this thing, you use the GDK. There’s also the Mirror API for server programming/web applications but
+we won’t get into that here. The GDK is basically a small layer/extension to the Android SDK and so if you’re familiar with Android I’d imagine you’ll have a
+smooth experience getting started on Glass.&lt;/p&gt;
+
+&lt;p&gt;If you’re looking for a decent resource to get started, best bet is &lt;a href=&quot;https://developers.google.com/glass/&quot;&gt;Glass Developer Docs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I have to say I feel like it takes a few hours to get comfortable with the technology and getting set up with a dev environment etc.
+But, these things are expected. None the less, I think there will be a lot of interest
+for a hack day with Glass. There’s plenty of applicability for Glassware, especially for health related applications. In fact,
+&lt;a href=&quot;https://twitter.com/al1ra/status/485753878030585856&quot;&gt;Ali Rawashdeh&lt;/a&gt; has been building Glassware for those affected by colour blindness! Just one
+of many possibilities.&lt;/p&gt;
+</description>
+                <link>http://kyledavidsonpro.github.io/technology/2014/07/27/Google-Glass</link>
+                <guid>http://kyledavidsonpro.github.io/technology/2014/07/27/Google-Glass</guid>
+                <pubDate>2014-07-27T00:00:00+01:00</pubDate>
+        </item>
+
+        <item>
+                <title>Mobilecko</title>
+                <description>
+&lt;h1 id=&quot;who-donates-blood-reguarly-in-the-uk&quot;&gt;Who donates blood reguarly in the UK?&lt;/h1&gt;
+
+&lt;p&gt;&lt;b&gt;Nobody.&lt;/b&gt; Well, not really but the actual figures aren’t much better, stand back while I copy and paste some research from my dissertation. &lt;i&gt;‘only 4% of people regularly give blood…’ (NHS.uk, 2013). Similarly, in the United States, ‘Although an estimated 38 percent of the U.S. population is eligible to donate blood at any given time, less than 10 percent do so annually.’ (Aabb.org, 2013).&lt;/i&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/shock.gif&quot; alt=&quot;shock&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you were to decide right now you’re going to donate blood for the first time, you’re probably gonna google your way to the Northern Ireland Blood and Transfusion Service’s website, where they provide a list of upcoming mobile donation sessions that can be attended around the country. You give a quick glance for one in your area, lets assume it’s not there, so what do you do? Statistically speaking, you do bugger all.&lt;/p&gt;
+
+&lt;p&gt;To be honest, it’s likely there’s mobile donation sessions in your area frequently, you just don’t give a proactive effort to keep track of that. For all you know you’ve driven past 3 of them on the way to work this week. You’re lazy! But… so are the other 96% of the population, including me. You’d think with the latest Apple 7 and Android Lumia we’d have some kind of app for donating blood wirelessly by now. Well I’ve got some great news…&lt;/p&gt;
+
+&lt;h2 id=&quot;theres-an-app-for-that&quot;&gt;There’s an app for that!&lt;/h2&gt;
+&lt;p&gt;Obviously not to donate blood wirelessly… are you crazy? That’s imposs- look nevermind. What I’m saying is I built something that allows an organisation such as the NIBTS to be able to have their users download a mobile app that will notify them whenever they are physically near a mobile blood donation session. Obviously, other business markets with an aspect of mobile operation can use this, i.e. food trucks, but let’s stick to blood donation as the use case since it is after all the whole inspiration of the solution.&lt;/p&gt;
+
+&lt;p&gt;So hopefully the situation that now arises when someone decides they want to donate blood is:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;They download the app&lt;/li&gt;
+&lt;li&gt;They are notified whenever they are physically near a mobile donation session&lt;/li&gt;
+&lt;li&gt;They donate&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Besides the main intention of an increase in lives saved, the idea is to provide features within the application to encourage regular donation, the ability to track progression and share via social networking to create further awareness of blood donation.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/yay.gif&quot; alt=&quot;yay&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I’m gonna give a brief run down of how it actually works below but I’ve put a header before that happens so people who don’t care about that side of things can bail out of this blog. Lastly for those interested, &lt;a href=&quot;http://imgur.com/a/DVXFS#4&quot;&gt;Early screenshots of the mobile app&lt;/a&gt;. Keep in mind these screenshots are very early days and do not include the profile system that was created. Also, &lt;a href=&quot;http://kyledavidsonpro.github.io/MobileckoWeb/login.html&quot;&gt;The web client&lt;/a&gt;. Feel free to create an account and play about on it, keep in mind everything is still in development and bugs are likely!&lt;/p&gt;
+
+&lt;h2 id=&quot;technical-details-below-get-out-while-you-can&quot;&gt;Technical details below, get out while you can&lt;/h2&gt;
+
+&lt;p&gt;The web client is just a basic html/js site that uses a Parse cloud database to store information on users and their events. Events are restricted through user permissions, i.e. GiveBloodNI wouldn’t be able to see McDonald’s event information etc. Google Geocoder API is used to geolocate the provided event address in order to find out where it is. Any created events can be seen on the Google Map and can be edited on the fly using the table of events (JQuery). Any changes are made asynchronously to Parse.&lt;/p&gt;
+
+&lt;p&gt;The mobile client is an iOS application that uses the cloud database to retrieve the event information, store it locally and notify users of upcoming events using the iOS background location and push notification services. There’s a profile system to allow users to log in and share events via Facebook.There’s lots of things I want to do with this down the line but it’s been temporarily shelved until I get sorted within the new job.&lt;/p&gt;
+
+&lt;p&gt;Lastly special thanks to &lt;a href=&quot;https://twitter.com/lukemcneice&quot;&gt;Luke&lt;/a&gt; for all the help with the idea as well as guidance along the way!&lt;/p&gt;
+</description>
+                <link>http://kyledavidsonpro.github.io/programming/2014/07/07/Mobilecko</link>
+                <guid>http://kyledavidsonpro.github.io/programming/2014/07/07/Mobilecko</guid>
+                <pubDate>2014-07-07T00:00:00+01:00</pubDate>
+        </item>
+
+
+</channel>
+</rss>
