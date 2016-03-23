@@ -5,27 +5,75 @@
     <description></description>
     <link>http://kyledavidsonpro.github.io/</link>
     <atom:link href="http://kyledavidsonpro.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 20 Mar 2016 17:55:11 +0100</pubDate>
-    <lastBuildDate>Sun, 20 Mar 2016 17:55:11 +0100</lastBuildDate>
+    <pubDate>Wed, 23 Mar 2016 17:47:26 +0000</pubDate>
+    <lastBuildDate>Wed, 23 Mar 2016 17:47:26 +0000</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
         <title>The Wealth of mHealth</title>
-        <description>&lt;p&gt;This weekend I attended the &lt;a href=&quot;http://mhealth.be/en/home/&quot;&gt;mHealth&lt;/a&gt; hackathon in Belgium with a team of developers: &lt;a href=&quot;https://twitter.com/marekkaluzny&quot;&gt;Marek&lt;/a&gt;, &lt;a href=&quot;https://twitter.com/matthewfitch23&quot;&gt;Matthew&lt;/a&gt;, &lt;a href=&quot;https://twitter.com/PMc_A&quot;&gt;Peter&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/iSteveyBrown&quot;&gt;Stephen&lt;/a&gt;. As a group we have a lot of experience with Hackathons, personally I’ve been to health focused hackathons before in Dublin, Liverpool and Barcelona. Generally the format across these type of events is the same, a mix of healthcare and technology professionals get together to pitch ideas, form teams and build a prototype solution. However, there was something very unique about this event.&lt;/p&gt;
+        <description>&lt;p&gt;This weekend I attended the &lt;a href=&quot;http://mhealth.be/en/home/&quot;&gt;mHealth&lt;/a&gt; hackathon in Belgium with a team of developers: &lt;a href=&quot;https://twitter.com/marekkaluzny&quot;&gt;Marek&lt;/a&gt;, &lt;a href=&quot;https://twitter.com/matthewfitch23&quot;&gt;Matthew&lt;/a&gt;, &lt;a href=&quot;https://twitter.com/PMc_A&quot;&gt;Peter&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/iSteveyBrown&quot;&gt;Stephen&lt;/a&gt;. As a group we have a lot of experience with Hackathons, myself having competed in Dublin, Liverpool and Barcelona. Generally the format across these type of events is the same, a mix of healthcare and technology professionals get together to pitch ideas, form teams and build a prototype solution. However, this one was a bit different.&lt;/p&gt;
 
-&lt;h1 id=&quot;day-1&quot;&gt;Day 1&lt;/h1&gt;
+&lt;h1 id=&quot;the-idea&quot;&gt;The Idea&lt;/h1&gt;
 
-&lt;p&gt;In the morning the team captains pitched their ideas and descriptions of these ideas were hung up around the room. Each participant was given 3 post-it notes to stick on their favourite ideas they would like to help build.&lt;/p&gt;
+&lt;p&gt;To kick off the event, the team captains pitched their ideas and afterwards these were hung up around the room. Each participant was given 3 post-it notes to stick on those they would like to help build. The problem we wanted to help solve was medication adherence. This is a huge problem in healthcare with billions lost each year because patients forget to take their medication or simply don’t want to continue taking it for a variety of reasons for example side effects. Our idea was to build a mobile solution that would:&lt;/p&gt;
+
+&lt;ol&gt;
+	&lt;li&gt;Allow a patient to manage their active perscriptions and view details on dosage, possible side effects etc.&lt;/li&gt;
+	&lt;li&gt;Receive configurable reminders and notifications to take their medication&lt;/li&gt;
+	&lt;li&gt;Provide an open communication stream with the patient&#39;s circle of care&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/InitialPitch.jpg&quot; alt=&quot;Our Idea&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Initially when we pitched this idea many people thought we simply intended to build a reminder application. Which is understandable given the hundreds of existing apps that act as glorified alarm clocks. The real focus of our solution was establishing the connection between the patient and their circle of care. Again, this is not some new idea that hasn’t been seen before, healthcare solutions ofcourse exist in which a mobile application communicates with some cloud platform to connect A to B. The problem is these existing solutions are bespoke; isolated to the context of their service. What we proposed was an application backed by a platform built upon &lt;a href=&quot;https://www.hl7.org/fhir/overview.html&quot;&gt;FHIR&lt;/a&gt;, an open standard for communicating healthcare information. We wanted a solution that could be implemented into existing systems, not replace them.&lt;/p&gt;
+
+&lt;p&gt;Since we were a team of 5 developers, we needed domain knowledge, someone to validate our idea. Thankfully, the very unique thing about this event was the sheer amount of healthcare professionals: high profile doctors, pharmacists, nurses and entrepreneurs we had access to. We met the amazing &lt;a href=&quot;https://twitter.com/KatrienApers&quot;&gt;Katrien&lt;/a&gt;, a nurse who works with existing solutions similar to what we wanted to build. We explained our idea to her and she joined our team to help us throughout the weekend. Each team was given a room to work in, again something not traditionally seen at hackathons as usually they’re open plan so people can bounce around and talk to eachother more easily.&lt;/p&gt;
+
+&lt;p&gt;Initially we were concerned about this but actually it worked very well, because such a large amount of healthcare professionals were available at this event many just moved around rooms, popping in and having discussions with each team. The thing we noticed right away though was this discussion wasn’t technical focused, numerous times we explained our idea to a Clinician, a Business Anaylyst for pharmacutical companies and researchers but much of the feedback was business focused. What was our market and competitors? Who would our first customers be? We realised we didn’t have answers to these questions.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/discussion_2.jpg&quot; alt=&quot;Discussion&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;the-business&quot;&gt;The Business&lt;/h1&gt;
+
+&lt;p&gt;That night there was a workshop around creating a Business Model Canvas, initially this is something we didn’t pay much attention to. As developers we were more focused on creating a Kanban board, we broke down our idea into &lt;a href=&quot;https://www.mountaingoatsoftware.com/agile/user-stories&quot;&gt;user stories&lt;/a&gt; and explained the development process to Katrien who was very interested to see how things were built from our side of the fence. She quickly understood the concept and began creating user stories from the clinicians perspective.&lt;/p&gt;
+
+&lt;p&gt;We ended up talking to a pharmacist trained business analyst from another team who had been walking around chatting to the other participants, he told us many of the other teams only had 1 or even no developers. We were shocked by this, a team with no developers? What were they building this weekend? It seemed some teams were approaching this event like a start-up weekend. We met one team with a similar idea to ours and offered to join the groups so that we could develop while they focused on the business value however their captain didn’t want to do this because he wanted to carry on the idea as a business afterwards and didn’t want 5 developers from one company involved, even though we explained this is something we volunteered to do for the experience and opportunity to build something cool.&lt;/p&gt;
+
+&lt;p&gt;The pharmacist we met asked us about our Business Model Canvas, of course at this moment we still didn’t have one. Honestly we didn’t see the importance of it, we were focused on building the product and naively thought it was something focused around making money which to us wasn’t important. We asked him if he could explain to us how it works and he drove an hour long discussion about our product as a business. He helped us to establish the detail of our marketing channels, value propostions, revenue streams and cost structures. As developers our customer ended at the patient, this solution was for them to make their life easier, but what we hadn’t thought about was the business value this solution could bring for the likes of pharmacitual companies and governments.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/discussion_1.jpg&quot; alt=&quot;Discussion&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;With the help of our new business analyst friend and some very helpful healthcare business experts, we identified that governments involved in reimbursing expensive medications that had been wasted could be interested in using our application as a mandatory companion with important and expensive medications. They could require patients to use the application in order to ensure the medication was being adhered to and if not, understand why.&lt;/p&gt;
+
+&lt;p&gt;Additionally the data we would collect around medication and feedback would be very valuable to pharmacutical companies. What are the most adhered to medications? What are the most common reasons Medication A isn’t adhered to? What are the reasons Medication B is? There was a clear opportunity here for Big Data analytics.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-pitch&quot;&gt;The Pitch&lt;/h1&gt;
+
+&lt;p&gt;By the last day of the event our roles had completely changed from developers to full-circle. Each of us were having discussions with a wide range of profressionals and generating ideas around Marketing, Sales, UI/UX and Investment. Each team was required to pitch a 7 minute presentation and we knew we needed to do something unique to stand out. We expected many presentations to include detailed statistics, diagrams and all sorts of wizardry so we decided to do something very simple and hand-draw our slides. We used simple stick-figures to tell a story about Jack and Jill. Jack was a guy who didn’t adhere to his medication for a variety of reasons: sometimes he forget, sometimes he was having negative side effects, but the story of Jack is a short one because nobody really knew what Jack was up to. Jill on the other hand downloaded MediMate, our mobile app that would help Jill remember to take her medication, provide a direct communication stream to her Pharmacist and allow her to be connected to her circle-of-care. Now we would know if Jill was having side effects or struggling to adhere to her medication and would be able to react appropriately.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/dry_run.jpg&quot; alt=&quot;Dry Run&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Our presentation was a success, we recieved lots of great feedback around our simple but engaging style, people comended our technical knowledge behind the solution and we were told our knowledge behind what was required to make this solution a reality was very impressive. For us this was a huge compliment. For a hugely development-focused team this whole event was extremely challenging, by the end our mindsets had completely opened up to think about everything required with our idea, to understand not only what we would build but how we would operate as a business.&lt;/p&gt;
+
+&lt;p&gt;For me this was the most challenging and rewarding hackathon I’ve ever attended. It was amazing being able to have these entreprenuerial focused conversations with very important people I would normally never have access to. We validated our idea and fleshed it out in such detail that we would have never accomplished without them. All in all an amazing opportunity.&lt;/p&gt;
+
+&lt;p&gt;Many thanks to &lt;a href=&quot;https://twitter.com/KatrienApers&quot;&gt;Katrien&lt;/a&gt;, &lt;a href=&quot;https://twitter.com/PieterClompen&quot;&gt;Pieter&lt;/a&gt;, the &lt;a href=&quot;http://advance.healthcare/&quot;&gt;Advance.Healthcare&lt;/a&gt; team and the superheroes who helped us throughout the weekend. The ‘Crazy Irish Guys’ had a great time!&lt;/p&gt;
+
+&lt;p&gt;P.S.: &lt;a href=&quot;https://twitter.com/search?q=%23medimate&amp;amp;src=typd&quot;&gt;Twitter Roll&lt;/a&gt; for the event and the team photo, carrying on my tradition of blinking at the wrong time in group photos.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/medimate.jpg&quot; alt=&quot;Medimate&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Sun, 20 Mar 2016 00:00:00 +0100</pubDate>
+        <pubDate>Sun, 20 Mar 2016 00:00:00 +0000</pubDate>
         <link>http://kyledavidsonpro.github.io/technology/2016/03/20/mHealth.html</link>
         <guid isPermaLink="true">http://kyledavidsonpro.github.io/technology/2016/03/20/mHealth.html</guid>
         
         <category>health</category>
         
         <category>technology</category>
+        
+        <category>business</category>
+        
+        <category>hackathons</category>
         
         
         <category>technology</category>
@@ -97,7 +145,7 @@
 
 &lt;p&gt;In short, the introduction of storyboard references make it much easier to seperate your application’s UI into manageable, reusable pieces whilst still making it clear how everything hooks together.&lt;/p&gt;
 </description>
-        <pubDate>Mon, 07 Sep 2015 00:00:00 +0200</pubDate>
+        <pubDate>Mon, 07 Sep 2015 00:00:00 +0100</pubDate>
         <link>http://kyledavidsonpro.github.io/technology/2015/09/07/Building-And-Organizing-Large-Projects-With-Storyboards.html</link>
         <guid isPermaLink="true">http://kyledavidsonpro.github.io/technology/2015/09/07/Building-And-Organizing-Large-Projects-With-Storyboards.html</guid>
         
@@ -170,7 +218,7 @@ We use formData[field.key] as the model for the input, so if our field key was �
 &lt;script src=&quot;https://gist.github.com/KyleDavidsonPro/4affc81df1e4582b9025.js&quot;&gt;&lt;/script&gt;
 
 </description>
-        <pubDate>Sun, 07 Dec 2014 00:00:00 +0100</pubDate>
+        <pubDate>Sun, 07 Dec 2014 00:00:00 +0000</pubDate>
         <link>http://kyledavidsonpro.github.io/technology/2014/12/07/Building-Dynamic-Forms-with-Angular-Directives.html</link>
         <guid isPermaLink="true">http://kyledavidsonpro.github.io/technology/2014/12/07/Building-Dynamic-Forms-with-Angular-Directives.html</guid>
         
@@ -219,7 +267,7 @@ preferences in most cases. My personal preference is probably Ember because of t
 &lt;p&gt;Go try them out when you get some time! I don’t want to get into coding examples and that kind of stuff in this blog, I’ll be doing a Codeslice on Ember.JS on 28th August
 which will hopefully be recorded and I can edit this post to include at a later date!&lt;/p&gt;
 </description>
-        <pubDate>Thu, 21 Aug 2014 00:00:00 +0200</pubDate>
+        <pubDate>Thu, 21 Aug 2014 00:00:00 +0100</pubDate>
         <link>http://kyledavidsonpro.github.io/technology/2014/08/21/Data-Binding-Frameworks.html</link>
         <guid isPermaLink="true">http://kyledavidsonpro.github.io/technology/2014/08/21/Data-Binding-Frameworks.html</guid>
         
@@ -271,7 +319,7 @@ for a hack day with Glass. There’s plenty of applicability for Glassware, espe
 &lt;a href=&quot;https://twitter.com/al1ra/status/485753878030585856&quot;&gt;Ali Rawashdeh&lt;/a&gt; has been building Glassware for those affected by colour blindness! Just one
 of many possibilities.&lt;/p&gt;
 </description>
-        <pubDate>Sun, 27 Jul 2014 00:00:00 +0200</pubDate>
+        <pubDate>Sun, 27 Jul 2014 00:00:00 +0100</pubDate>
         <link>http://kyledavidsonpro.github.io/technology/2014/07/27/Google-Glass.html</link>
         <guid isPermaLink="true">http://kyledavidsonpro.github.io/technology/2014/07/27/Google-Glass.html</guid>
         
@@ -320,7 +368,7 @@ of many possibilities.&lt;/p&gt;
 
 &lt;p&gt;Lastly special thanks to &lt;a href=&quot;https://twitter.com/lukemcneice&quot;&gt;Luke&lt;/a&gt; for all the help with the idea as well as guidance along the way!&lt;/p&gt;
 </description>
-        <pubDate>Mon, 07 Jul 2014 00:00:00 +0200</pubDate>
+        <pubDate>Mon, 07 Jul 2014 00:00:00 +0100</pubDate>
         <link>http://kyledavidsonpro.github.io/programming/2014/07/07/Mobilecko.html</link>
         <guid isPermaLink="true">http://kyledavidsonpro.github.io/programming/2014/07/07/Mobilecko.html</guid>
         
