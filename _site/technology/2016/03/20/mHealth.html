@@ -10,8 +10,8 @@
   <meta name="description" content="This weekend I attended the mHealth hackathon in Belgium with a team of developers: Marek, Matthew, Peter and Stephen. As a group we have a lot of experience...">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://kyledavidsonpro.github.io/technology/2016/03/20/mHealth.html">
-  <link rel="alternate" type="application/rss+xml" title="Kyle Davidson" href="http://kyledavidsonpro.github.io/feed.xml">
+  <link rel="canonical" href="http://localhost:4000/technology/2016/03/20/mHealth.html">
+  <link rel="alternate" type="application/rss+xml" title="Kyle Davidson" href="http://localhost:4000/feed.xml">
 </head>
 
 
@@ -62,7 +62,7 @@
 
 <h1 id="the-idea">The Idea</h1>
 
-<p>To kick off the event, the team captains pitched their ideas and afterwards these were hung up around the room. Each participant was given 3 post-it notes to stick on those they would like to help build. The problem we wanted to help solve was medication adherence. This is a huge problem in healthcare with billions lost each year because patients forget to take their medication or simply don’t want to continue taking it for a variety of reasons for example side effects. Our idea was to build a mobile solution that would:</p>
+<p>To kick off the event, the team captains pitched their ideas and afterwards these were hung up around the room. Each participant was given 3 post-it notes to stick on those they would like to help build. The problem we wanted to help solve was medication adherence. This is a huge problem in healthcare with billions lost each year because patients forget to take their medication or simply don’t want to continue taking it for other reasons e.g. side effects. Our idea was to build a mobile solution that would:</p>
 
 <ol>
 	<li>Allow a patient to manage their active prescriptions and view details on dosage, possible side effects etc.</li>
@@ -70,25 +70,25 @@
 	<li>Provide an open communication stream with the patient's circle of care</li>
 </ol>
 
-<p><img src="http://kyledavidsonpro.github.io/assets/InitialPitch.jpg" alt="Our Idea" /></p>
+<p><img src="http://localhost:4000/assets/InitialPitch.jpg" alt="Our Idea" /></p>
 
 <p>Initially when we pitched this idea many people thought we simply intended to build a reminder application. Which is understandable given the hundreds of existing apps that act as glorified alarm clocks. The real focus of our solution was establishing the connection between the patient and their circle of care. Again, this is not some new idea that hasn’t been seen before, healthcare solutions of course exist in which a mobile application communicates with some cloud platform to connect A to B. The problem is these existing solutions are bespoke; isolated to the context of their service. What we proposed was an application backed by a platform built upon <a href="https://www.hl7.org/fhir/overview.html">FHIR</a>, an open standard for communicating healthcare information. We wanted a solution that could be implemented into existing systems, not replace them.</p>
 
-<p>Since we were a team of 5 developers, we needed domain knowledge, someone to validate our idea. Thankfully, the very unique thing about this event was the sheer amount of healthcare professionals: high profile doctors, pharmacists, nurses and entrepreneurs we had access to. We met the amazing <a href="https://twitter.com/KatrienApers">Katrien</a>, a nurse who works with existing solutions similar to what we wanted to build. We explained our idea to her and she joined our team to help us throughout the weekend. Each team was given a room to work in, again something not traditionally seen at hackathons as usually they’re open plan so people can bounce around and talk to each other more easily.</p>
+<p>Since we were a team of 5 developers, we needed domain knowledge, someone to validate our idea. Thankfully, the very unique thing about this event was the sheer amount of healthcare professionals we had: high profile doctors, pharmacists, nurses and entrepreneurs we had access to. We met <a href="https://twitter.com/KatrienApers">Katrien</a>, a nurse who works with existing solutions similar to what we wanted to build. We explained our idea to her and she joined our team to help us throughout the weekend. Each team was given a room to work in, again something not traditionally seen at hackathons as usually they’re open plan so people can bounce around and talk to each other more easily.</p>
 
-<p>Initially we were concerned about this but actually it worked very well, because such a large amount of healthcare professionals were available at this event many just moved around rooms, popping in and having discussions with each team. The thing we noticed right away though was this discussion wasn’t technical focused, numerous times we explained our idea to a Clinician, a Business Analyst for pharmaceutical companies and researchers but much of the feedback was business focused. What was our market and competitors? Who would our first customers be? We realised we didn’t have answers to these questions.</p>
+<p>Initially we were concerned about this but actually it worked very well, because such a large amount of healthcare professionals were available at this event many just moved around rooms, popping in and having discussions with each team. The thing we noticed right away though was this discussion wasn’t technical focused, numerous times we explained our idea to a clinician, a business analyst for pharmaceutical companies and researchers but much of the feedback was business focused. What was our market and competitors? Who would our first customers be? We realised we didn’t have answers to these questions.</p>
 
-<p><img src="http://kyledavidsonpro.github.io/assets/discussion_2.jpg" alt="Discussion" /></p>
+<p><img src="http://localhost:4000/assets/discussion_2.jpg" alt="Discussion" /></p>
 
 <h1 id="the-business">The Business</h1>
 
 <p>That night there was a workshop around creating a Business Model Canvas, initially this is something we didn’t pay much attention to. As developers we were more focused on creating a Kanban board, we broke down our idea into <a href="https://www.mountaingoatsoftware.com/agile/user-stories">user stories</a> and explained the development process to Katrien who was very interested to see how things were built from our side of the fence. She quickly understood the concept and began creating user stories from the clinician’s perspective.</p>
 
-<p>We ended up talking to a pharmacist trained business analyst from another team who had been walking around chatting to the other participants, he told us many of the other teams only had 1 or even no developers. A team with no developers shocked us. What were they building this weekend? It seemed some teams were approaching this event like a start-up weekend. We met one team with a similar idea to ours and offered to join the groups so that we could develop while they focused on the business value however their captain didn’t want to do this because he wanted to carry on the idea as a business afterwards and didn’t want 5 developers from one company involved, even though we explained this is something we volunteered to do for the experience and opportunity to build something cool.</p>
+<p>We ended up talking to a pharmacist trained business analyst from another team who had been walking around chatting to the other participants. He told us many of the other teams only had 1 or even no developers. A team with no developers shocked us, what were they building this weekend? It seemed some teams were approaching this event like a start-up weekend. We met one team without developers with an idea similar to ours and offered to join the groups so that we could develop while they focused on the business value however their captain didn’t want to do this because he wanted to carry on the idea as a business afterwards and didn’t want 5 developers from one company involved. We understood his concerns but we explained this is something we volunteered to do for the experience and opportunity to build something cool.</p>
 
-<p>The pharmacist we met asked us about our Business Model Canvas, of course at this moment we still didn’t have one. Honestly we didn’t see the importance of it, we were focused on building the product and naively thought it was something focused around making money, which to us wasn’t important. We asked him if he could explain to us how it works and he drove an hour-long discussion about our product as a business. He helped us to establish the detail of our marketing channels, value propositions, revenue streams and cost structures. As developers our customer ended at the patient, this solution was for them to make their life easier, but what we hadn’t thought about was the business value this solution could bring for the likes of pharmaceutical companies and governments.</p>
+<p>The pharmacist we met asked us about our Business Model Canvas, of course at this moment we still didn’t have one. Honestly we didn’t see the importance of it, we were focused on building the product and we thought it was something focused around making money, which to us wasn’t important. We asked him if he could explain to us how it works and he drove an hour-long discussion about our product as a business. He helped us to establish the detail of our marketing channels, value propositions, revenue streams and cost structures. As developers our customer ended at the patient. This solution was for them to make their life easier, but what we hadn’t thought about was the business value this solution could bring for the likes of pharmaceutical companies and governments.</p>
 
-<p><img src="http://kyledavidsonpro.github.io/assets/discussion_1.jpg" alt="Discussion" /></p>
+<p><img src="http://localhost:4000/assets/discussion_1.jpg" alt="Discussion" /></p>
 
 <p>With the help of our new business analyst friend and some very helpful healthcare business experts, we identified that governments involved in reimbursing expensive medications that had been wasted could be interested in using our application as a mandatory companion with important and expensive medications. They could require patients to use the application in order to ensure the medication was being adhered to and if not, understand why.</p>
 
@@ -96,9 +96,9 @@
 
 <h1 id="the-pitch">The Pitch</h1>
 
-<p>By the last day of the event our roles had completely changed from developers to full-circle. Each of us were having discussions with a wide range of professionals and generating ideas around Marketing, Sales, UI/UX and Investment. Each team was required to pitch a 7-minute presentation and we knew we needed to do something unique to stand out. We expected many presentations to include detailed statistics, diagrams and all sorts of wizardry so we decided to do something very simple and hand-draw our slides. We used simple stick figures to tell a story about Jack and Jill. Jack was a guy who didn’t adhere to his medication for a variety of reasons: sometimes he forget, sometimes he was having negative side effects, but the story of Jack is a short one because nobody really knew what Jack was up to. Jill on the other hand downloaded MediMate, our mobile app that would help Jill remember to take her medication, provide a direct communication stream to her Pharmacist and allow her to be connected to her circle-of-care. Now we would know if Jill was having side effects or struggling to adhere to her medication and would be able to react appropriately.</p>
+<p>By the last day of the event our roles had completely changed from developers to full-circle. Each of us were having discussions with a wide range of professionals and generating ideas around marketing, sales, UI/UX and investment. Each team was required to pitch a 7-minute presentation and we knew we needed to do something unique to stand out. We expected many presentations to include detailed statistics, diagrams and all sorts of wizardry so we decided to do something very simple and hand-draw our slides. We used simple stick figures to tell a story about Jack and Jill. Jack was a guy who didn’t adhere to his medication for a variety of reasons: sometimes he forget, sometimes he was having negative side effects, but the story of Jack is a short one because nobody really knew what Jack was up to. Jill on the other hand downloaded MediMate, our mobile app that would help Jill remember to take her medication, provide a direct communication stream to her Pharmacist and allow her to be connected to her circle-of-care. Now we would know if Jill was having side effects or struggling to adhere to her medication and would be able to react appropriately.</p>
 
-<p><img src="http://kyledavidsonpro.github.io/assets/dry_run.jpg" alt="Dry Run" /></p>
+<p><img src="http://localhost:4000/assets/dry_run.jpg" alt="Dry Run" /></p>
 
 <p>Our presentation was a success, we received lots of great feedback around our simple but engaging style, people commended our technical knowledge behind the solution and we were told our knowledge behind what was required to make this solution a reality was very impressive. For us this was a huge compliment. For a hugely development-focused team this whole event was extremely challenging, by the end our mind-sets had completely opened up to think about everything required with our idea, to understand not only what we would build but also how we would operate as a business.</p>
 
@@ -106,9 +106,9 @@
 
 <p>Many thanks to <a href="https://twitter.com/KatrienApers">Katrien</a>, <a href="https://twitter.com/PieterClompen">Pieter</a>, the <a href="http://advance.healthcare/">Advance.Healthcare</a> team, the superheroes who helped us throughout the weekend and most importantly <a href="https://www.kainos.com/">Kainos</a> for giving us the opportunity to attend this event. The ‘Crazy Irish Guys’ had a great time!</p>
 
-<p>P.S.: <a href="https://twitter.com/search?q=%23medimate&amp;src=typd">Twitter Roll</a> for the event and the team photo, carrying on my tradition of blinking at the wrong time in group photos.</p>
+<p>P.S.: <a href="https://twitter.com/hashtag/mhealthbe?src=hash">Twitter Roll</a> for the event and the team photo, carrying on my tradition of blinking at the wrong time in group photos.</p>
 
-<p><img src="http://kyledavidsonpro.github.io/assets/medimate.jpg" alt="Dry Run" /></p>
+<p><img src="http://localhost:4000/assets/medimate.jpg" alt="Dry Run" /></p>
 
   </div>
 
@@ -126,8 +126,8 @@
         <ul class="social-media-list">
           
           <li>
-            <a href="https://github.com/kyledavidsonpro"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
-</span><span class="username">kyledavidsonpro</span></a>
+            <a href="https://github.com/kylerd"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">kylerd</span></a>
 
           </li>
           

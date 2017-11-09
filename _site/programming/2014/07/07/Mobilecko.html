@@ -10,8 +10,8 @@
   <meta name="description" content="Who donates blood reguarly in the UK?">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://kyledavidsonpro.github.io/programming/2014/07/07/Mobilecko.html">
-  <link rel="alternate" type="application/rss+xml" title="Kyle Davidson" href="http://kyledavidsonpro.github.io/feed.xml">
+  <link rel="canonical" href="http://localhost:4000/programming/2014/07/07/Mobilecko.html">
+  <link rel="alternate" type="application/rss+xml" title="Kyle Davidson" href="http://localhost:4000/feed.xml">
 </head>
 
 
@@ -62,7 +62,7 @@
 
 <p><b>Nobody.</b> Well, not really but the actual figures aren’t much better, stand back while I copy and paste some research from my dissertation. <i>‘only 4% of people regularly give blood…’ (NHS.uk, 2013). Similarly, in the United States, ‘Although an estimated 38 percent of the U.S. population is eligible to donate blood at any given time, less than 10 percent do so annually.’ (Aabb.org, 2013).</i></p>
 
-<p><img src="http://kyledavidsonpro.github.io/assets/shock.gif" alt="shock" /></p>
+<p><img src="http://localhost:4000/assets/shock.gif" alt="shock" /></p>
 
 <p>If you were to decide right now you’re going to donate blood for the first time, you’re probably gonna google your way to the Northern Ireland Blood and Transfusion Service’s website, where they provide a list of upcoming mobile donation sessions that can be attended around the country. You give a quick glance for one in your area, lets assume it’s not there, so what do you do? Statistically speaking, you do bugger all.</p>
 
@@ -80,7 +80,7 @@
 
 <p>Besides the main intention of an increase in lives saved, the idea is to provide features within the application to encourage regular donation, the ability to track progression and share via social networking to create further awareness of blood donation.</p>
 
-<p><img src="http://kyledavidsonpro.github.io/assets/yay.gif" alt="yay" /></p>
+<p><img src="http://localhost:4000/assets/yay.gif" alt="yay" /></p>
 
 <p>I’m gonna give a brief run down of how it actually works below but I’ve put a header before that happens so people who don’t care about that side of things can bail out of this blog. Lastly for those interested, <a href="http://imgur.com/a/DVXFS#4">Early screenshots of the mobile app</a>. Keep in mind these screenshots are very early days and do not include the profile system that was created. Also, <a href="http://kyledavidsonpro.github.io/MobileckoWeb/login.html">The web client</a>. Feel free to create an account and play about on it, keep in mind everything is still in development and bugs are likely!</p>
 
@@ -108,8 +108,8 @@
         <ul class="social-media-list">
           
           <li>
-            <a href="https://github.com/kyledavidsonpro"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
-</span><span class="username">kyledavidsonpro</span></a>
+            <a href="https://github.com/kylerd"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">kylerd</span></a>
 
           </li>
           

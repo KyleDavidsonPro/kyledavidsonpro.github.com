@@ -3,11 +3,139 @@
   <channel>
     <title>Kyle Davidson</title>
     <description></description>
-    <link>http://kyledavidsonpro.github.io/</link>
-    <atom:link href="http://kyledavidsonpro.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 23 Mar 2016 18:02:59 +0000</pubDate>
-    <lastBuildDate>Wed, 23 Mar 2016 18:02:59 +0000</lastBuildDate>
-    <generator>Jekyll v3.1.2</generator>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 10 Nov 2017 09:59:00 +0000</pubDate>
+    <lastBuildDate>Fri, 10 Nov 2017 09:59:00 +0000</lastBuildDate>
+    <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Elevator Pitch - Knockout JS</title>
+        <description>&lt;p&gt;I haven’t blogged anything in ages but I want somewhere I can fire up some quick high level summaries of technologies I’m working with. It’s for my own reference really but hopefully if you’re reading this you can find some use in it!&lt;/p&gt;
+
+&lt;h1 id=&quot;knockout-js&quot;&gt;Knockout JS&lt;/h1&gt;
+
+&lt;p&gt;One of the 10 billion Javascript libraries out there, this one is for building &lt;strong&gt;dynamic UI’s with Javascript&lt;/strong&gt; using the Model-View-View Model (MVVM) pattern. So basically if you find yourself writing a load of Javascript that’s injecting big HTML blobs all over the place, Knockout is your friend.&lt;/p&gt;
+
+&lt;h4 id=&quot;what-it-is&quot;&gt;What it is&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Lightweight &amp;amp; small&lt;/li&gt;
+  &lt;li&gt;Supported by a ton of browsers&lt;/li&gt;
+  &lt;li&gt;No dependencies&lt;/li&gt;
+  &lt;li&gt;Akin to some other frameworks which have data-binding features (Angular, Ember or whatever)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;what-it-isnt&quot;&gt;What it isn’t&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;An application framework - it’s not like Angular where it drives your entire application, it’s just a handy library for easy two-way data binding with some extra plugins you could optionally use such as form validation. It doesn’t control how you build the application. In my case I used Knockout with &lt;a href=&quot;http://flask.pocoo.org/&quot;&gt;Flask&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;knockout-101&quot;&gt;Knockout 101&lt;/h1&gt;
+
+&lt;p&gt;Following the key points of MVVM. You define your view-model in Javascript:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AppViewModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;firstName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ko&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;observable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Kyle&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lastName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ko&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;observable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Davidson&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Activates knockout.js&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;ko&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;applyBindings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AppViewModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You can then bind this to your html (the view) using the &lt;code class=&quot;highlighter-rouge&quot;&gt;data-bind&lt;/code&gt; attribute:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;First name: &lt;span class=&quot;nt&quot;&gt;&amp;lt;strong&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-bind=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text: firstName&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Last name: &lt;span class=&quot;nt&quot;&gt;&amp;lt;strong&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-bind=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text: lastName&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The text binding assigns text to those DOM elements, using the values from our view-model. The &lt;code class=&quot;highlighter-rouge&quot;&gt;ko.observable&lt;/code&gt; type will allow our properties to automatically issue notifications whenever their values change. That way any changes to the properties will be reflected on the UI.&lt;/p&gt;
+
+&lt;p&gt;Other popular &lt;code class=&quot;highlighter-rouge&quot;&gt;data-bind&lt;/code&gt; options:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;value&lt;/code&gt;: links the associated DOM element’s value with a property on your view model.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;First name: &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-bind=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;value: firstName&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;visible&lt;/code&gt;: causes the associated DOM element to become hidden or visible according to the value you pass to the binding.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-bind=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;visible: shouldShowMessage&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;	
+    You will see this message only when &quot;shouldShowMessage&quot; holds a true value.
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Using a more popular scenario, let’s say you wanted to build an HTML list out of an array of objects in Javascript. Using fruit as an example, we can declare a model for our fruit objects and build an observable array in the view model.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;// Class to represent a fruit&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Fruit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;colour&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;colour&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ko&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;observable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;colour&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;price&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ko&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;observable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Class to represent the view model&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AppViewModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fruits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ko&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;observableArray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Fruit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Apple&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Green&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;3.50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Fruit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Orange&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Orange&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;3.40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Fruit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Banana&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Yellow&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;3.30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Activates knockout.js&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;ko&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;applyBindings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AppViewModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Using the &lt;code class=&quot;highlighter-rouge&quot;&gt;for-each&lt;/code&gt; data-bind option, we can easily generate a list from these objects like so:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-bind=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;foreach: fruits&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Name: &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-bind=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text: name&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;. Colour: &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-bind=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text: colour&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;. Price: &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-bind=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text: price&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Since we’re using an observable array, any changes to the &lt;code class=&quot;highlighter-rouge&quot;&gt;fruits&lt;/code&gt; array will be reflected in the html.&lt;/p&gt;
+
+&lt;h1 id=&quot;other-features&quot;&gt;Other features&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Computed properties&lt;/li&gt;
+  &lt;li&gt;Event handlers (click, hover etc.)&lt;/li&gt;
+  &lt;li&gt;Templating&lt;/li&gt;
+  &lt;li&gt;Custom bindings&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Pretty much everything I’ve said is covered in their great &lt;a href=&quot;http://knockoutjs.com/documentation/introduction.html&quot;&gt;documentation&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 25 Oct 2017 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/programming/2017/10/25/Knockout.html</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2017/10/25/Knockout.html</guid>
+        
+        <category>programming</category>
+        
+        <category>digital services</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>The Wealth of mHealth</title>
@@ -15,33 +143,33 @@
 
 &lt;h1 id=&quot;the-idea&quot;&gt;The Idea&lt;/h1&gt;
 
-&lt;p&gt;To kick off the event, the team captains pitched their ideas and afterwards these were hung up around the room. Each participant was given 3 post-it notes to stick on those they would like to help build. The problem we wanted to help solve was medication adherence. This is a huge problem in healthcare with billions lost each year because patients forget to take their medication or simply don’t want to continue taking it for a variety of reasons for example side effects. Our idea was to build a mobile solution that would:&lt;/p&gt;
+&lt;p&gt;To kick off the event, the team captains pitched their ideas and afterwards these were hung up around the room. Each participant was given 3 post-it notes to stick on those they would like to help build. The problem we wanted to help solve was medication adherence. This is a huge problem in healthcare with billions lost each year because patients forget to take their medication or simply don’t want to continue taking it for other reasons e.g. side effects. Our idea was to build a mobile solution that would:&lt;/p&gt;
 
 &lt;ol&gt;
 	&lt;li&gt;Allow a patient to manage their active prescriptions and view details on dosage, possible side effects etc.&lt;/li&gt;
 	&lt;li&gt;Receive configurable reminders and notifications to take their medication&lt;/li&gt;
-	&lt;li&gt;Provide an open communication stream with the patient&#39;s circle of care&lt;/li&gt;
+	&lt;li&gt;Provide an open communication stream with the patient's circle of care&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/InitialPitch.jpg&quot; alt=&quot;Our Idea&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/InitialPitch.jpg&quot; alt=&quot;Our Idea&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Initially when we pitched this idea many people thought we simply intended to build a reminder application. Which is understandable given the hundreds of existing apps that act as glorified alarm clocks. The real focus of our solution was establishing the connection between the patient and their circle of care. Again, this is not some new idea that hasn’t been seen before, healthcare solutions of course exist in which a mobile application communicates with some cloud platform to connect A to B. The problem is these existing solutions are bespoke; isolated to the context of their service. What we proposed was an application backed by a platform built upon &lt;a href=&quot;https://www.hl7.org/fhir/overview.html&quot;&gt;FHIR&lt;/a&gt;, an open standard for communicating healthcare information. We wanted a solution that could be implemented into existing systems, not replace them.&lt;/p&gt;
 
-&lt;p&gt;Since we were a team of 5 developers, we needed domain knowledge, someone to validate our idea. Thankfully, the very unique thing about this event was the sheer amount of healthcare professionals: high profile doctors, pharmacists, nurses and entrepreneurs we had access to. We met the amazing &lt;a href=&quot;https://twitter.com/KatrienApers&quot;&gt;Katrien&lt;/a&gt;, a nurse who works with existing solutions similar to what we wanted to build. We explained our idea to her and she joined our team to help us throughout the weekend. Each team was given a room to work in, again something not traditionally seen at hackathons as usually they’re open plan so people can bounce around and talk to each other more easily.&lt;/p&gt;
+&lt;p&gt;Since we were a team of 5 developers, we needed domain knowledge, someone to validate our idea. Thankfully, the very unique thing about this event was the sheer amount of healthcare professionals we had: high profile doctors, pharmacists, nurses and entrepreneurs we had access to. We met &lt;a href=&quot;https://twitter.com/KatrienApers&quot;&gt;Katrien&lt;/a&gt;, a nurse who works with existing solutions similar to what we wanted to build. We explained our idea to her and she joined our team to help us throughout the weekend. Each team was given a room to work in, again something not traditionally seen at hackathons as usually they’re open plan so people can bounce around and talk to each other more easily.&lt;/p&gt;
 
-&lt;p&gt;Initially we were concerned about this but actually it worked very well, because such a large amount of healthcare professionals were available at this event many just moved around rooms, popping in and having discussions with each team. The thing we noticed right away though was this discussion wasn’t technical focused, numerous times we explained our idea to a Clinician, a Business Analyst for pharmaceutical companies and researchers but much of the feedback was business focused. What was our market and competitors? Who would our first customers be? We realised we didn’t have answers to these questions.&lt;/p&gt;
+&lt;p&gt;Initially we were concerned about this but actually it worked very well, because such a large amount of healthcare professionals were available at this event many just moved around rooms, popping in and having discussions with each team. The thing we noticed right away though was this discussion wasn’t technical focused, numerous times we explained our idea to a clinician, a business analyst for pharmaceutical companies and researchers but much of the feedback was business focused. What was our market and competitors? Who would our first customers be? We realised we didn’t have answers to these questions.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/discussion_2.jpg&quot; alt=&quot;Discussion&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/discussion_2.jpg&quot; alt=&quot;Discussion&quot; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;the-business&quot;&gt;The Business&lt;/h1&gt;
 
 &lt;p&gt;That night there was a workshop around creating a Business Model Canvas, initially this is something we didn’t pay much attention to. As developers we were more focused on creating a Kanban board, we broke down our idea into &lt;a href=&quot;https://www.mountaingoatsoftware.com/agile/user-stories&quot;&gt;user stories&lt;/a&gt; and explained the development process to Katrien who was very interested to see how things were built from our side of the fence. She quickly understood the concept and began creating user stories from the clinician’s perspective.&lt;/p&gt;
 
-&lt;p&gt;We ended up talking to a pharmacist trained business analyst from another team who had been walking around chatting to the other participants, he told us many of the other teams only had 1 or even no developers. A team with no developers shocked us. What were they building this weekend? It seemed some teams were approaching this event like a start-up weekend. We met one team with a similar idea to ours and offered to join the groups so that we could develop while they focused on the business value however their captain didn’t want to do this because he wanted to carry on the idea as a business afterwards and didn’t want 5 developers from one company involved, even though we explained this is something we volunteered to do for the experience and opportunity to build something cool.&lt;/p&gt;
+&lt;p&gt;We ended up talking to a pharmacist trained business analyst from another team who had been walking around chatting to the other participants. He told us many of the other teams only had 1 or even no developers. A team with no developers shocked us, what were they building this weekend? It seemed some teams were approaching this event like a start-up weekend. We met one team without developers with an idea similar to ours and offered to join the groups so that we could develop while they focused on the business value however their captain didn’t want to do this because he wanted to carry on the idea as a business afterwards and didn’t want 5 developers from one company involved. We understood his concerns but we explained this is something we volunteered to do for the experience and opportunity to build something cool.&lt;/p&gt;
 
-&lt;p&gt;The pharmacist we met asked us about our Business Model Canvas, of course at this moment we still didn’t have one. Honestly we didn’t see the importance of it, we were focused on building the product and naively thought it was something focused around making money, which to us wasn’t important. We asked him if he could explain to us how it works and he drove an hour-long discussion about our product as a business. He helped us to establish the detail of our marketing channels, value propositions, revenue streams and cost structures. As developers our customer ended at the patient, this solution was for them to make their life easier, but what we hadn’t thought about was the business value this solution could bring for the likes of pharmaceutical companies and governments.&lt;/p&gt;
+&lt;p&gt;The pharmacist we met asked us about our Business Model Canvas, of course at this moment we still didn’t have one. Honestly we didn’t see the importance of it, we were focused on building the product and we thought it was something focused around making money, which to us wasn’t important. We asked him if he could explain to us how it works and he drove an hour-long discussion about our product as a business. He helped us to establish the detail of our marketing channels, value propositions, revenue streams and cost structures. As developers our customer ended at the patient. This solution was for them to make their life easier, but what we hadn’t thought about was the business value this solution could bring for the likes of pharmaceutical companies and governments.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/discussion_1.jpg&quot; alt=&quot;Discussion&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/discussion_1.jpg&quot; alt=&quot;Discussion&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;With the help of our new business analyst friend and some very helpful healthcare business experts, we identified that governments involved in reimbursing expensive medications that had been wasted could be interested in using our application as a mandatory companion with important and expensive medications. They could require patients to use the application in order to ensure the medication was being adhered to and if not, understand why.&lt;/p&gt;
 
@@ -49,9 +177,9 @@
 
 &lt;h1 id=&quot;the-pitch&quot;&gt;The Pitch&lt;/h1&gt;
 
-&lt;p&gt;By the last day of the event our roles had completely changed from developers to full-circle. Each of us were having discussions with a wide range of professionals and generating ideas around Marketing, Sales, UI/UX and Investment. Each team was required to pitch a 7-minute presentation and we knew we needed to do something unique to stand out. We expected many presentations to include detailed statistics, diagrams and all sorts of wizardry so we decided to do something very simple and hand-draw our slides. We used simple stick figures to tell a story about Jack and Jill. Jack was a guy who didn’t adhere to his medication for a variety of reasons: sometimes he forget, sometimes he was having negative side effects, but the story of Jack is a short one because nobody really knew what Jack was up to. Jill on the other hand downloaded MediMate, our mobile app that would help Jill remember to take her medication, provide a direct communication stream to her Pharmacist and allow her to be connected to her circle-of-care. Now we would know if Jill was having side effects or struggling to adhere to her medication and would be able to react appropriately.&lt;/p&gt;
+&lt;p&gt;By the last day of the event our roles had completely changed from developers to full-circle. Each of us were having discussions with a wide range of professionals and generating ideas around marketing, sales, UI/UX and investment. Each team was required to pitch a 7-minute presentation and we knew we needed to do something unique to stand out. We expected many presentations to include detailed statistics, diagrams and all sorts of wizardry so we decided to do something very simple and hand-draw our slides. We used simple stick figures to tell a story about Jack and Jill. Jack was a guy who didn’t adhere to his medication for a variety of reasons: sometimes he forget, sometimes he was having negative side effects, but the story of Jack is a short one because nobody really knew what Jack was up to. Jill on the other hand downloaded MediMate, our mobile app that would help Jill remember to take her medication, provide a direct communication stream to her Pharmacist and allow her to be connected to her circle-of-care. Now we would know if Jill was having side effects or struggling to adhere to her medication and would be able to react appropriately.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/dry_run.jpg&quot; alt=&quot;Dry Run&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/dry_run.jpg&quot; alt=&quot;Dry Run&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Our presentation was a success, we received lots of great feedback around our simple but engaging style, people commended our technical knowledge behind the solution and we were told our knowledge behind what was required to make this solution a reality was very impressive. For us this was a huge compliment. For a hugely development-focused team this whole event was extremely challenging, by the end our mind-sets had completely opened up to think about everything required with our idea, to understand not only what we would build but also how we would operate as a business.&lt;/p&gt;
 
@@ -59,13 +187,13 @@
 
 &lt;p&gt;Many thanks to &lt;a href=&quot;https://twitter.com/KatrienApers&quot;&gt;Katrien&lt;/a&gt;, &lt;a href=&quot;https://twitter.com/PieterClompen&quot;&gt;Pieter&lt;/a&gt;, the &lt;a href=&quot;http://advance.healthcare/&quot;&gt;Advance.Healthcare&lt;/a&gt; team, the superheroes who helped us throughout the weekend and most importantly &lt;a href=&quot;https://www.kainos.com/&quot;&gt;Kainos&lt;/a&gt; for giving us the opportunity to attend this event. The ‘Crazy Irish Guys’ had a great time!&lt;/p&gt;
 
-&lt;p&gt;P.S.: &lt;a href=&quot;https://twitter.com/search?q=%23medimate&amp;amp;src=typd&quot;&gt;Twitter Roll&lt;/a&gt; for the event and the team photo, carrying on my tradition of blinking at the wrong time in group photos.&lt;/p&gt;
+&lt;p&gt;P.S.: &lt;a href=&quot;https://twitter.com/hashtag/mhealthbe?src=hash&quot;&gt;Twitter Roll&lt;/a&gt; for the event and the team photo, carrying on my tradition of blinking at the wrong time in group photos.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/medimate.jpg&quot; alt=&quot;Dry Run&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/medimate.jpg&quot; alt=&quot;Dry Run&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 20 Mar 2016 00:00:00 +0000</pubDate>
-        <link>http://kyledavidsonpro.github.io/technology/2016/03/20/mHealth.html</link>
-        <guid isPermaLink="true">http://kyledavidsonpro.github.io/technology/2016/03/20/mHealth.html</guid>
+        <link>http://localhost:4000/technology/2016/03/20/mHealth.html</link>
+        <guid isPermaLink="true">http://localhost:4000/technology/2016/03/20/mHealth.html</guid>
         
         <category>health</category>
         
@@ -87,7 +215,7 @@
 &lt;p&gt;When it comes to designing the views in your application, there are 3 approaches at your disposal:&lt;/p&gt;
 
 &lt;ol&gt;
-	&lt;li&gt;&lt;b&gt;Code&lt;/b&gt;: As you would expect, creating and handling all your visual components as well as their positioning, animations and so on, via code. Unless there is a very specific requirement that would force you to do this you really shouldn&#39;t. In general, hand coded UIs are tedious, increase the amount of tests required, difficult to refactor and aren&#39;t really tangible compared to the visual tools at your disposal.&lt;/li&gt;
+	&lt;li&gt;&lt;b&gt;Code&lt;/b&gt;: As you would expect, creating and handling all your visual components as well as their positioning, animations and so on, via code. Unless there is a very specific requirement that would force you to do this you really shouldn't. In general, hand coded UIs are tedious, increase the amount of tests required, difficult to refactor and aren't really tangible compared to the visual tools at your disposal.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;NIBs/XIBs&lt;/b&gt;: With nib files, you create and manipulate your user interfaces graphically, using Xcode, instead of programmatically. Because you can see the results of your changes instantly, you can experiment with different layouts and configurations very quickly. You can also change many aspects of your user interface later without rewriting any code. This has been a favourite approach for many and generally successful in larger projects.&lt;/li&gt;
 	&lt;li&gt;&lt;b&gt;Storyboards&lt;/b&gt;: While NIBs give the ability to visually represent individual views, storyboards are a visual tool for laying out not only multiple views but also representing the navigation between them. Since their introduction in iOS 5, storyboards have become ever more popular and the recommended way to design the user interface of your application because they enable you to visualize the appearance and flow of your whole application on one canvas.&lt;/li&gt;
 &lt;/ol&gt;
@@ -111,43 +239,43 @@
 &lt;h1 id=&quot;ios-9-storyboard-references&quot;&gt;iOS 9 Storyboard References&lt;/h1&gt;
 &lt;p&gt;As an example let’s create a new tabbed application using the default Xcode template and take a look at the main storyboard file that is created for us.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/Tab Bar Storyboard.png&quot; alt=&quot;Initial Storyboard&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/Tab Bar Storyboard.png&quot; alt=&quot;Initial Storyboard&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Since this is a tab bar application it’s likely each tab will encompass a hierarchy of views and UI components. In this case it’s easy to identify the natural modules/sections of the UI since it’s really just each tab, so we can begin to split the application up into multiple storyboards. This is known as &lt;b&gt;refactoring&lt;/b&gt;. You can select views in an existing storyboard to be refactored out into a new storyboard by highlighting them and selecting Xcode’s &lt;b&gt;Editor&lt;/b&gt; menu &amp;gt; &lt;b&gt;Refactor to Storyboard&lt;/b&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/Refactor to Storyboard.png&quot; alt=&quot;Refactor Storyboard&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/Refactor to Storyboard.png&quot; alt=&quot;Refactor Storyboard&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;This will prompt you to give a name for the new Storyboard file that will be created, in my case &lt;b&gt;FirstTab.storyboard&lt;/b&gt; and then it will move the selected views to the new storyboard and insert a storyboard reference in the original storyboard.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/Storyboard Reference.png&quot; alt=&quot;Storyboard Reference&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/Storyboard Reference.png&quot; alt=&quot;Storyboard Reference&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;If you double click the storyboard reference it will take you to the storyboard file associated with that reference. As well as refactoring existing views into new storyboards you can also create storyboards from scratch and reference them later, for example if we created a new Storyboard file for a new tab in our application called &lt;b&gt;ThirdTab.storyboard&lt;/b&gt; and gave it a view controller it might look something like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/Third Tab.png&quot; alt=&quot;Third Tab&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/Third Tab.png&quot; alt=&quot;Third Tab&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;i&gt;Note the View Controller’s properties panel on the right hand side where I’ve checked &lt;b&gt;Is Initial View Controller&lt;/b&gt; - this creates a &lt;b&gt;Storyboard Entry Point&lt;/b&gt; so that any storyboard reference will by default instantiate this view controller when triggered. You can also link to other scenes in the storyboard rather than the initial view controller by setting the &lt;b&gt;Storyboard ID&lt;/b&gt; in the Identity Inspector for the view controller you wish to instantiate.&lt;/i&gt;&lt;/p&gt;
 
 &lt;p&gt;With the storyboard for our third tab created we can then drag in a new Storyboard Reference in &lt;b&gt;Main.storyboard&lt;/b&gt; from the Object Library.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/Object Library.png&quot; alt=&quot;Object Library&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/Object Library.png&quot; alt=&quot;Object Library&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;You can set the storyboard associated by the storyboard reference by selecting it and choosing the new storyboard from the dropdown.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/Set Storyboard.png&quot; alt=&quot;Set Storyboard&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/Set Storyboard.png&quot; alt=&quot;Set Storyboard&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Then all that’s left to do is to Ctrl + Drag from the Tab Bar Controller to our Storyboard Reference to connect them with a Relationship Segue.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/Set Relationship.png&quot; alt=&quot;Set Relationship&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/Set Relationship.png&quot; alt=&quot;Set Relationship&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;This creates a new tab on the tab bar for us and Voilà!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/Final Storyboard.png&quot; alt=&quot;Final Storyboard&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/Final Storyboard.png&quot; alt=&quot;Final Storyboard&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In short, the introduction of storyboard references make it much easier to seperate your application’s UI into manageable, reusable pieces whilst still making it clear how everything hooks together.&lt;/p&gt;
 </description>
         <pubDate>Mon, 07 Sep 2015 00:00:00 +0100</pubDate>
-        <link>http://kyledavidsonpro.github.io/technology/2015/09/07/Building-And-Organizing-Large-Projects-With-Storyboards.html</link>
-        <guid isPermaLink="true">http://kyledavidsonpro.github.io/technology/2015/09/07/Building-And-Organizing-Large-Projects-With-Storyboards.html</guid>
+        <link>http://localhost:4000/technology/2015/09/07/Building-And-Organizing-Large-Projects-With-Storyboards.html</link>
+        <guid isPermaLink="true">http://localhost:4000/technology/2015/09/07/Building-And-Organizing-Large-Projects-With-Storyboards.html</guid>
         
         <category>programming</category>
         
@@ -219,8 +347,8 @@ We use formData[field.key] as the model for the input, so if our field key was �
 
 </description>
         <pubDate>Sun, 07 Dec 2014 00:00:00 +0000</pubDate>
-        <link>http://kyledavidsonpro.github.io/technology/2014/12/07/Building-Dynamic-Forms-with-Angular-Directives.html</link>
-        <guid isPermaLink="true">http://kyledavidsonpro.github.io/technology/2014/12/07/Building-Dynamic-Forms-with-Angular-Directives.html</guid>
+        <link>http://localhost:4000/technology/2014/12/07/Building-Dynamic-Forms-with-Angular-Directives.html</link>
+        <guid isPermaLink="true">http://localhost:4000/technology/2014/12/07/Building-Dynamic-Forms-with-Angular-Directives.html</guid>
         
         <category>programming</category>
         
@@ -268,8 +396,8 @@ preferences in most cases. My personal preference is probably Ember because of t
 which will hopefully be recorded and I can edit this post to include at a later date!&lt;/p&gt;
 </description>
         <pubDate>Thu, 21 Aug 2014 00:00:00 +0100</pubDate>
-        <link>http://kyledavidsonpro.github.io/technology/2014/08/21/Data-Binding-Frameworks.html</link>
-        <guid isPermaLink="true">http://kyledavidsonpro.github.io/technology/2014/08/21/Data-Binding-Frameworks.html</guid>
+        <link>http://localhost:4000/technology/2014/08/21/Data-Binding-Frameworks.html</link>
+        <guid isPermaLink="true">http://localhost:4000/technology/2014/08/21/Data-Binding-Frameworks.html</guid>
         
         <category>programming</category>
         
@@ -293,9 +421,9 @@ However, first and foremost it’s a sweet ass pair of James Bond glasses so…&
 
 &lt;p&gt;&lt;strong&gt;Warning: Incoming Selfies&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/Glass1.jpg&quot; alt=&quot;Glass&quot; height=&quot;124&quot; width=&quot;124&quot; /&gt;
-&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/Glass2.jpg&quot; alt=&quot;Me with Google Glass&quot; height=&quot;124&quot; width=&quot;124&quot; /&gt;
-&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/Glass3.jpg&quot; alt=&quot;Me with normal Glasses&quot; height=&quot;124&quot; width=&quot;124&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/Glass1.jpg&quot; alt=&quot;Glass&quot; height=&quot;124&quot; width=&quot;124&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/assets/Glass2.jpg&quot; alt=&quot;Me with Google Glass&quot; height=&quot;124&quot; width=&quot;124&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/assets/Glass3.jpg&quot; alt=&quot;Me with normal Glasses&quot; height=&quot;124&quot; width=&quot;124&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;So if it isn’t obvious, from left to right, the Google Glasses, me wearing the Google Glasses, and me wearing my normal glasses. So to be fair,
 they look &lt;em&gt;alright&lt;/em&gt;, but I think right now if you were to walk around in Belfast with them people would inform you that you look like a pleb. I love the idea
@@ -320,8 +448,8 @@ for a hack day with Glass. There’s plenty of applicability for Glassware, espe
 of many possibilities.&lt;/p&gt;
 </description>
         <pubDate>Sun, 27 Jul 2014 00:00:00 +0100</pubDate>
-        <link>http://kyledavidsonpro.github.io/technology/2014/07/27/Google-Glass.html</link>
-        <guid isPermaLink="true">http://kyledavidsonpro.github.io/technology/2014/07/27/Google-Glass.html</guid>
+        <link>http://localhost:4000/technology/2014/07/27/Google-Glass.html</link>
+        <guid isPermaLink="true">http://localhost:4000/technology/2014/07/27/Google-Glass.html</guid>
         
         <category>programming</category>
         
@@ -338,7 +466,7 @@ of many possibilities.&lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Nobody.&lt;/b&gt; Well, not really but the actual figures aren’t much better, stand back while I copy and paste some research from my dissertation. &lt;i&gt;‘only 4% of people regularly give blood…’ (NHS.uk, 2013). Similarly, in the United States, ‘Although an estimated 38 percent of the U.S. population is eligible to donate blood at any given time, less than 10 percent do so annually.’ (Aabb.org, 2013).&lt;/i&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/shock.gif&quot; alt=&quot;shock&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/shock.gif&quot; alt=&quot;shock&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;If you were to decide right now you’re going to donate blood for the first time, you’re probably gonna google your way to the Northern Ireland Blood and Transfusion Service’s website, where they provide a list of upcoming mobile donation sessions that can be attended around the country. You give a quick glance for one in your area, lets assume it’s not there, so what do you do? Statistically speaking, you do bugger all.&lt;/p&gt;
 
@@ -356,7 +484,7 @@ of many possibilities.&lt;/p&gt;
 
 &lt;p&gt;Besides the main intention of an increase in lives saved, the idea is to provide features within the application to encourage regular donation, the ability to track progression and share via social networking to create further awareness of blood donation.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://kyledavidsonpro.github.io/assets/yay.gif&quot; alt=&quot;yay&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/yay.gif&quot; alt=&quot;yay&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I’m gonna give a brief run down of how it actually works below but I’ve put a header before that happens so people who don’t care about that side of things can bail out of this blog. Lastly for those interested, &lt;a href=&quot;http://imgur.com/a/DVXFS#4&quot;&gt;Early screenshots of the mobile app&lt;/a&gt;. Keep in mind these screenshots are very early days and do not include the profile system that was created. Also, &lt;a href=&quot;http://kyledavidsonpro.github.io/MobileckoWeb/login.html&quot;&gt;The web client&lt;/a&gt;. Feel free to create an account and play about on it, keep in mind everything is still in development and bugs are likely!&lt;/p&gt;
 
@@ -369,8 +497,8 @@ of many possibilities.&lt;/p&gt;
 &lt;p&gt;Lastly special thanks to &lt;a href=&quot;https://twitter.com/lukemcneice&quot;&gt;Luke&lt;/a&gt; for all the help with the idea as well as guidance along the way!&lt;/p&gt;
 </description>
         <pubDate>Mon, 07 Jul 2014 00:00:00 +0100</pubDate>
-        <link>http://kyledavidsonpro.github.io/programming/2014/07/07/Mobilecko.html</link>
-        <guid isPermaLink="true">http://kyledavidsonpro.github.io/programming/2014/07/07/Mobilecko.html</guid>
+        <link>http://localhost:4000/programming/2014/07/07/Mobilecko.html</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2014/07/07/Mobilecko.html</guid>
         
         <category>programming</category>
         
