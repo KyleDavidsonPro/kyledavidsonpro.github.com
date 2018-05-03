@@ -1,0 +1,33 @@
+<h1 id="data-what-frameworks">Data what frameworks?</h1>
+
+<p>What indeed! I’ve recently been looking into some Javascript frameworks that fall under this category of ‘data binding’. Having focused primarily on iOS development for
+the past 2ish years I’d consider myself out of the loop when it comes to web dev. So hopefully if you’re like me and haven’t had much exposure to web technologies you
+may find some use in this post!</p>
+
+<p>I’m working on a project that uses <a href="https://angularjs.org/">Angular.js</a> in parts of the front end and was asked to look into <a href="http://emberjs.com/">Ember.js</a> as an alternative.
+If you’re wondering what these things are they’re basically Javascript frameworks used primarily for single page applications. What I mean by single page applications is, instead of
+navigating through a site by accessing different html pages through the url, e.g. mysite.com/about would render about.html, a single page application instead uses a single html file and only
+the hash fragment of the URL changes e.g. mysite.com#/about. In this case, we’ll still change the behaviour of the page in regards to what we see, but the page itself stays the same and doesn’t reload.</p>
+
+<h1 id="how-it-works">How it works</h1>
+<p>So these frameworks follow the MVC pattern and generally there are 3 key parts/concepts you should understand:</p>
+<ol>
+<li>Routing: This involves updating the page in response to the URL hash</li>
+<li>Templating: Expressing views with a templating language, for example Handlebars.js</li>
+<li>Data Binding: Maintaining a synchronization between the model and the view</li>
+</ol>
+
+<p>You can do some really cool things with these frameworks in a crazy low amount of code. Ember for example has a <a href="http://emberjs.com/guides/models/the-rest-adapter/">REST Adapter</a> that provides
+a way to work with your model through your REST api without having to write any boilerplate. The most popular frameworks are arguably:</p>
+<ul>
+<li>Angular</li>
+<li>Ember</li>
+<li>Knockout</li>
+</ul>
+
+<p>All of which are great to work with and achieve generally the same thing, there’s a popular Ember vs Angular debate but to be honest it really falls down to your
+preferences in most cases. My personal preference is probably Ember because of their convention principles but that’s not to say I don’t like Angular.</p>
+
+<h1 id="what-now">What now?</h1>
+<p>Go try them out when you get some time! I don’t want to get into coding examples and that kind of stuff in this blog, I’ll be doing a Codeslice on Ember.JS on 28th August
+which will hopefully be recorded and I can edit this post to include at a later date!</p>

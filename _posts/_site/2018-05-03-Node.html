@@ -1,0 +1,89 @@
+<h1 id="node-js">Node JS</h1>
+
+<p>Node.js is a server side runtime environment powered by Javascript.</p>
+
+<h4 id="what-it-is">What it is</h4>
+<ul>
+  <li>Lightweight with some handy built-in modules</li>
+  <li>Asynchronous by default</li>
+  <li>Performant, Scalable</li>
+  <li>Allows us to write a pure Javascript application</li>
+</ul>
+
+<h4 id="what-it-isnt">What it isn’t</h4>
+<ul>
+  <li><strong>Multi-Threaded</strong>: Node runs in a single process and the application code runs in a single thread, so while it is asynchronous, certain long-running calculations or complex tasks can block other incoming requests.</li>
+</ul>
+
+<h1 id="node-101">Node 101</h1>
+<p>Here’s how we can create a Node JS web server and that will handle HTTP requests to port 8080.</p>
+
+<pre><code class="language-Javascript">// my_server.js
+const http = require('http');
+
+const server = http.createServer((req, res) =&gt; {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World\n');
+});
+
+server.listen(8080)
+</code></pre>
+
+<p>As you can see, if we accessed that port on the browser we would see “Hello World”. The first line of code above imports one of Node’s core modules.</p>
+
+<p><strong>Modules</strong> are just functionality organised into Javascript files that can be reused under a common namespace. We could just as easily create our own module by creating a Javascript file and adding some code to the special <code class="highlighter-rouge">exports</code> object provided by Node:</p>
+
+<pre><code class="language-Javascript">// my_module.js
+exports.myDateTime = function () {
+    return Date();
+};
+</code></pre>
+<pre><code class="language-Javascript">// my_server.js
+const http = require('http');
+const myModule = require('./my_module.js')
+
+const server = http.createServer((req, res) =&gt; {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World, here is the time: ' + myModule.myDateTime());
+});
+
+server.listen(8080)
+</code></pre>
+
+<p>Some handy core module’s provided by Node include:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Module</th>
+      <th style="text-align: center">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="https://nodejs.org/api/http.html">http</a></td>
+      <td style="text-align: center">classes, methods and events to create http servers</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://nodejs.org/api/url.html">url</a></td>
+      <td style="text-align: center">methods for url parsing</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://nodejs.org/api/querystring.html">querystring</a></td>
+      <td style="text-align: center">methods to deal with query strings</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://nodejs.org/api/util.html">util</a></td>
+      <td style="text-align: center">utility functions</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="node-package-manager">Node Package Manager</h1>
+
+<p><a href="https://www.npmjs.com">NPM</a> is a command line tool that provides dependancy management for your Node.js application. It allows you to install, update or uninstall packages in your application with ease. And provides an online repository for open-source Node.js packages from the community.</p>
+
+<h1 id="frameworks-for-node-js">Frameworks for Node JS</h1>
+<p>Even from my basic code example’s above you can see that when just using Node, the code required to write an actual Web Application is fairly low-level. Yet, Node provides us with a solid foundation for developing front-end appications and API’s. So it should be no suprise there are various third party open-source frameworks available in Node Package Manager which makes Node.js application development faster and easy. For example: <a href="http://kylerd.github.io/programming/2018/05/04/Express.html">Express JS</a></p>

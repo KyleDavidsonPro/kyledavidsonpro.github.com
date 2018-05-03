@@ -1,0 +1,112 @@
+<p>I haven’t blogged anything in ages but I want somewhere I can fire up some quick high level summaries of technologies I’m working with. It’s for my own reference really but hopefully if you’re reading this you can find some use in it!</p>
+
+<h1 id="knockout-js">Knockout JS</h1>
+
+<p>One of the 10 billion Javascript libraries out there, this one is for building <strong>dynamic UI’s with Javascript</strong> using the Model-View-View Model (MVVM) pattern. So basically if you find yourself writing a load of Javascript that’s injecting big HTML blobs all over the place, Knockout is your friend.</p>
+
+<h4 id="what-it-is">What it is</h4>
+
+<ul>
+  <li>Lightweight &amp; small</li>
+  <li>Supported by a ton of browsers</li>
+  <li>No dependencies</li>
+  <li>Akin to some other frameworks which have data-binding features (Angular, Ember or whatever)</li>
+</ul>
+
+<h4 id="what-it-isnt">What it isn’t</h4>
+
+<ul>
+  <li>An application framework - it’s not like Angular where it drives your entire application, it’s just a handy library for easy two-way data binding with some extra plugins you could optionally use such as form validation. It doesn’t control how you build the application. In my case I used Knockout with <a href="http://flask.pocoo.org/">Flask</a></li>
+</ul>
+
+<h1 id="knockout-101">Knockout 101</h1>
+
+<p>Following the key points of MVVM. You define your view-model in Javascript:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">AppViewModel</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="nx">ko</span><span class="p">.</span><span class="nx">observable</span><span class="p">(</span><span class="s2">"Kyle"</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="nx">ko</span><span class="p">.</span><span class="nx">observable</span><span class="p">(</span><span class="s2">"Davidson"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Activates knockout.js</span>
+<span class="nx">ko</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">AppViewModel</span><span class="p">());</span>
+
+</code></pre>
+</div>
+
+<p>You can then bind this to your html (the view) using the <code class="highlighter-rouge">data-bind</code> attribute:</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>First name: <span class="nt">&lt;strong</span> <span class="na">data-bind=</span><span class="s">"text: firstName"</span><span class="nt">&gt;&lt;/strong&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>Last name: <span class="nt">&lt;strong</span> <span class="na">data-bind=</span><span class="s">"text: lastName"</span><span class="nt">&gt;&lt;/strong&gt;&lt;/p&gt;</span>
+</code></pre>
+</div>
+
+<p>The text binding assigns text to those DOM elements, using the values from our view-model. The <code class="highlighter-rouge">ko.observable</code> type will allow our properties to automatically issue notifications whenever their values change. That way any changes to the properties will be reflected on the UI.</p>
+
+<p>Other popular <code class="highlighter-rouge">data-bind</code> options:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">value</code>: links the associated DOM element’s value with a property on your view model.</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>First name: <span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">"value: firstName"</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">visible</code>: causes the associated DOM element to become hidden or visible according to the value you pass to the binding.</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"visible: shouldShowMessage"</span><span class="nt">&gt;</span>	
+    You will see this message only when "shouldShowMessage" holds a true value.
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<p>Using a more popular scenario, let’s say you wanted to build an HTML list out of an array of objects in Javascript. Using fruit as an example, we can declare a model for our fruit objects and build an observable array in the view model.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>
+<span class="c1">// Class to represent a fruit</span>
+<span class="kd">function</span> <span class="nx">Fruit</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">colour</span><span class="p">,</span> <span class="nx">price</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+
+    <span class="nx">self</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="nx">self</span><span class="p">.</span><span class="nx">colour</span> <span class="o">=</span> <span class="nx">ko</span><span class="p">.</span><span class="nx">observable</span><span class="p">(</span><span class="nx">colour</span><span class="p">);</span>
+    <span class="nx">self</span><span class="p">.</span><span class="nx">price</span> <span class="o">=</span> <span class="nx">ko</span><span class="p">.</span><span class="nx">observable</span><span class="p">(</span><span class="nx">price</span><span class="p">);</span> 
+<span class="p">}</span>
+
+<span class="c1">// Class to represent the view model</span>
+<span class="kd">function</span> <span class="nx">AppViewModel</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">fruits</span> <span class="o">=</span> <span class="nx">ko</span><span class="p">.</span><span class="nx">observableArray</span><span class="p">([</span>
+        <span class="k">new</span> <span class="nx">Fruit</span><span class="p">(</span><span class="s2">"Apple"</span><span class="p">,</span> <span class="s2">"Green"</span><span class="p">,</span> <span class="mf">3.50</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nx">Fruit</span><span class="p">(</span><span class="s2">"Orange"</span><span class="p">,</span> <span class="s2">"Orange"</span><span class="p">,</span> <span class="mf">3.40</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nx">Fruit</span><span class="p">(</span><span class="s2">"Banana"</span><span class="p">,</span> <span class="s2">"Yellow"</span><span class="p">,</span> <span class="mf">3.30</span><span class="p">)</span>
+    <span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="c1">// Activates knockout.js</span>
+<span class="nx">ko</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">AppViewModel</span><span class="p">());</span>
+
+</code></pre>
+</div>
+
+<p>Using the <code class="highlighter-rouge">for-each</code> data-bind option, we can easily generate a list from these objects like so:</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">"foreach: fruits"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li&gt;</span>Name: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: name"</span><span class="nt">&gt;&lt;/span&gt;</span>. Colour: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: colour"</span><span class="nt">&gt;&lt;/span&gt;</span>. Price: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: price"</span><span class="nt">&gt;&lt;/span&gt;</span> <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre>
+</div>
+
+<p>Since we’re using an observable array, any changes to the <code class="highlighter-rouge">fruits</code> array will be reflected in the html.</p>
+
+<h1 id="other-features">Other features</h1>
+<ul>
+  <li>Computed properties</li>
+  <li>Event handlers (click, hover etc.)</li>
+  <li>Templating</li>
+  <li>Custom bindings</li>
+</ul>
+
+<p>Pretty much everything I’ve said is covered in their great <a href="http://knockoutjs.com/documentation/introduction.html">documentation</a>.</p>
+
