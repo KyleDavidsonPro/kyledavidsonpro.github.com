@@ -76,19 +76,18 @@
 <p>Express can be installed using <a href="https://www.npmjs.com/">NPM</a>. with <code class="highlighter-rouge">npm install express</code></p>
 
 <p>In the previous Node JS blog, we were able to spin up a web server to handle our requests to port 8080. The same thing can be achieved, and then some, with Express like so:</p>
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// app.js</span>
-<span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// app.js</span>
+<span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Hello World'</span><span class="p">);</span>
 <span class="p">});</span>
 
 <span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8080</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Node server is running..'</span><span class="p">);</span>
 <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>As you can see this is quite similar to the set-up we did in the Node blog, the difference being at the top we’ve included the Express module and initialised it to a variable called app, this has given us an Express application context which we can then define routes on easily.</p>
 
@@ -108,20 +107,20 @@
 
 <p>Another middleware module which is particularly useful is <a href="https://github.com/expressjs/body-parser">body-parser</a> which allows us to easily parse incoming request bodies. Like any module, it can be installed using NPM <code class="highlighter-rouge">npm install body-parser</code>and here’s how we could use it in combination with Express to create a basic REST API.</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// app.js</span>
-<span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// app.js</span>
+<span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
 
 <span class="kd">var</span> <span class="nx">bodyParser</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"body-parser"</span><span class="p">);</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span> <span class="na">extended</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}));</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/apples'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">apples</span> <span class="o">=</span> <span class="nx">fake_db</span><span class="p">.</span><span class="nx">apples</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'/apples'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">apples</span> <span class="o">=</span> <span class="nx">fake_db</span><span class="p">.</span><span class="nx">apples</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
   <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">apples</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/apples/:id'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">apple</span> <span class="o">=</span> <span class="nx">fake_db</span><span class="p">.</span><span class="nx">apples</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'/apples/:id'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">apple</span> <span class="o">=</span> <span class="nx">fake_db</span><span class="p">.</span><span class="nx">apples</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
 
   <span class="k">if</span> <span class="p">(</span><span class="nx">apple</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">apple</span><span class="p">);</span>
@@ -152,8 +151,7 @@
 <span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8080</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Node server is running..'</span><span class="p">);</span>
 <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>So you can see with Express we can quickly define routes and the methods that can be performed on them, furthermore the <code class="highlighter-rouge">bodyParser</code> middleware module gave us easy access to request bodies through <code class="highlighter-rouge">req.body</code>.</p>
 
@@ -162,29 +160,27 @@
 <p>When it comes to web front-ends in Express, using a template engine enables you to use static template files which at runtime are transformed into HTML files, this includes populating any variables defined in a template file with actual values. This approach makes it easier to design an HTML page and is especially useful in combination with REST API’s where you could define one template to represent many resources of the same type.  As a quick example, we will use the <a href="https://www.npmjs.com/package/pug">pug</a> template engine, again this can be installed via NPM <code class="highlighter-rouge">npm install pug</code></p>
 
 <p>We can define a template and use it in our Express application like so, in this example I’ve created a folder in my project called <code class="highlighter-rouge">views</code> which contains the template file:</p>
-<div class="language-html highlighter-rouge"><pre class="highlight"><code>// index.pug
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// index.pug
 html
   head
     title=title
   body
     h1= message
 
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>And then in my Express application I can do:</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// app.js</span>
-<span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// app.js</span>
+<span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'views'</span><span class="p">,</span> <span class="s1">'./views'</span><span class="p">)</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'view engine'</span><span class="p">,</span> <span class="s1">'pug'</span><span class="p">)</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">'views'</span><span class="p">,</span> <span class="s1">'./views'</span><span class="p">)</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">'view engine'</span><span class="p">,</span> <span class="s1">'pug'</span><span class="p">)</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">'index'</span><span class="p">,</span> <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="s1">'Hello World'</span><span class="p">,</span> <span class="na">message</span><span class="p">:</span> <span class="s1">'Welcome to my website!'</span> <span class="p">})</span>
 <span class="p">})</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>When you make a request to the ‘/’ page, the index.pug file will be rendered as HTML.</p>
 
