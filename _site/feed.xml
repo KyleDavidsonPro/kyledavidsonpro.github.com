@@ -5,13 +5,13 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 12 Aug 2019 16:57:43 +0100</pubDate>
-    <lastBuildDate>Mon, 12 Aug 2019 16:57:43 +0100</lastBuildDate>
+    <pubDate>Mon, 12 Aug 2019 17:46:14 +0100</pubDate>
+    <lastBuildDate>Mon, 12 Aug 2019 17:46:14 +0100</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
         <title>AWS Cognito</title>
-        <description>&lt;p&gt;Just over a year ago I evaluated &lt;a href=&quot;https://aws.amazon.com/cognito/&quot;&gt;AWS Cognito&lt;/a&gt; and it’s suitability for a digital service project in Kainos. This is a large solution that aims to become a centralised system for collecting and processing a specific sector of information in the UK. It’s a highly active environment with around 3 million events carried out per year. These activities have an estimated economic impact of £4 billion per annum and operate in a highly complex ecosystem between local authorities, utility companies, third party contractors and specialist software vendors. We use AWS Cognito to support these 500+ organisations and their users.&lt;/p&gt;
+        <description>&lt;p&gt;Just over a year ago I evaluated &lt;a href=&quot;https://aws.amazon.com/cognito/&quot;&gt;AWS Cognito&lt;/a&gt; and it’s suitability for a digital service project in Kainos. This is a large solution that aims to become a centralised system for collecting and processing a specific sector of information in the UK. It’s a highly active environment with around 3 million transactions processed every year. These activities have an estimated economic impact of £4 billion per annum and operate in a highly complex ecosystem between local authorities, utility companies, third party contractors and specialist software vendors. We use AWS Cognito to support these 500+ organisations and their users.&lt;/p&gt;
 
 &lt;p&gt;For the uninitiated AWS Cognito is a secure and scalable user directory. It has features like &lt;a href=&quot;https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation.html&quot;&gt;federated third-party sign-in&lt;/a&gt; and &lt;a href=&quot;https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-sync.html&quot;&gt;cross-device-syncing&lt;/a&gt; but in the case of our project it was chosen for its standards-driven authentication and authorisation capabilities.&lt;/p&gt;
 
@@ -67,7 +67,7 @@
 
 &lt;p&gt;Any request to a secure endpoint in our application expects and validates the token provided in this header. &lt;a href=&quot;https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-verifying-a-jwt.html&quot;&gt;Verifying a JWT&lt;/a&gt; in Cognito is well documented and straight-forward. We even found a node package which bundles the steps up for us called &lt;a href=&quot;https://www.npmjs.com/package/cognito-express&quot;&gt;cognito-express&lt;/a&gt; but we found it gave us less control around logging and health monitoring than we wanted so we wrote our own small service to carry out the validation instead.&lt;/p&gt;
 
-&lt;p&gt;Cognito has given us a well documentated and flexible authentication layer with flows for sign-up, sign-in, sign-out, forgot-password, administrative invites, resets, disabling and more. Furthermore the &lt;a href=&quot;https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-user-groups.html&quot;&gt;group&lt;/a&gt; functions have given us an access control layer that has held up to this day. The JSON web tokens have allowed us to build a secure authorisation layer with virtually no effort.&lt;/p&gt;
+&lt;p&gt;Cognito has given us a well documentated and flexible authentication layer with flows for sign-up, sign-in, sign-out, forgot-password, administrative invites, resets, disabling and more. Additionally the &lt;a href=&quot;https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-user-groups.html&quot;&gt;group&lt;/a&gt; functions have given us a flexible approach to RBAC that when combined with the JSON web tokens have allowed us to build a secure authorisation layer with little effort.&lt;/p&gt;
 
 &lt;h2 id=&quot;challenges&quot;&gt;Challenges&lt;/h2&gt;
 

@@ -7,7 +7,7 @@ category: cloud
 tags: [cloud, digital services]
 ---
 
-Just over a year ago I evaluated [AWS Cognito](https://aws.amazon.com/cognito/) and it's suitability for a digital service project in Kainos. This is a large solution that aims to become a centralised system for collecting and processing a specific sector of information in the UK. It's a highly active environment with around 3 million events carried out per year. These activities have an estimated economic impact of £4 billion per annum and operate in a highly complex ecosystem between local authorities, utility companies, third party contractors and specialist software vendors. We use AWS Cognito to support these 500+ organisations and their users.
+Just over a year ago I evaluated [AWS Cognito](https://aws.amazon.com/cognito/) and it's suitability for a digital service project in Kainos. This is a large solution that aims to become a centralised system for collecting and processing a specific sector of information in the UK. It's a highly active environment with around 3 million transactions processed every year. These activities have an estimated economic impact of £4 billion per annum and operate in a highly complex ecosystem between local authorities, utility companies, third party contractors and specialist software vendors. We use AWS Cognito to support these 500+ organisations and their users.
 
 For the uninitiated AWS Cognito is a secure and scalable user directory. It has features like [federated third-party sign-in](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation.html) and [cross-device-syncing](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-sync.html) but in the case of our project it was chosen for its standards-driven authentication and authorisation capabilities.  
 
@@ -55,7 +55,7 @@ Authentication and authorisation in our project works like this:
 
 Any request to a secure endpoint in our application expects and validates the token provided in this header. [Verifying a JWT](https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-verifying-a-jwt.html) in Cognito is well documented and straight-forward. We even found a node package which bundles the steps up for us called [cognito-express](https://www.npmjs.com/package/cognito-express) but we found it gave us less control around logging and health monitoring than we wanted so we wrote our own small service to carry out the validation instead. 
 
-Cognito has given us a well documentated and flexible authentication layer with flows for sign-up, sign-in, sign-out, forgot-password, administrative invites, resets, disabling and more. Furthermore the [group](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-user-groups.html) functions have given us an access control layer that has held up to this day. The JSON web tokens have allowed us to build a secure authorisation layer with virtually no effort.
+Cognito has given us a well documentated and flexible authentication layer with flows for sign-up, sign-in, sign-out, forgot-password, administrative invites, resets, disabling and more. Additionally the [group](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-user-groups.html) functions have given us a flexible approach to RBAC that when combined with the JSON web tokens have allowed us to build a secure authorisation layer with little effort.
 
 ## Challenges
 
