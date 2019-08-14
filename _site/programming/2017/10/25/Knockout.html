@@ -84,8 +84,8 @@
 <p>Following the key points of MVVM. You define your view-model in Javascript:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">AppViewModel</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="nx">ko</span><span class="p">.</span><span class="nx">observable</span><span class="p">(</span><span class="s2">"Kyle"</span><span class="p">);</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="nx">ko</span><span class="p">.</span><span class="nx">observable</span><span class="p">(</span><span class="s2">"Davidson"</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="nx">ko</span><span class="p">.</span><span class="nx">observable</span><span class="p">(</span><span class="dl">"</span><span class="s2">Kyle</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="nx">ko</span><span class="p">.</span><span class="nx">observable</span><span class="p">(</span><span class="dl">"</span><span class="s2">Davidson</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="c1">// Activates knockout.js</span>
@@ -134,9 +134,9 @@
 <span class="c1">// Class to represent the view model</span>
 <span class="kd">function</span> <span class="nx">AppViewModel</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">fruits</span> <span class="o">=</span> <span class="nx">ko</span><span class="p">.</span><span class="nx">observableArray</span><span class="p">([</span>
-        <span class="k">new</span> <span class="nx">Fruit</span><span class="p">(</span><span class="s2">"Apple"</span><span class="p">,</span> <span class="s2">"Green"</span><span class="p">,</span> <span class="mf">3.50</span><span class="p">),</span>
-        <span class="k">new</span> <span class="nx">Fruit</span><span class="p">(</span><span class="s2">"Orange"</span><span class="p">,</span> <span class="s2">"Orange"</span><span class="p">,</span> <span class="mf">3.40</span><span class="p">),</span>
-        <span class="k">new</span> <span class="nx">Fruit</span><span class="p">(</span><span class="s2">"Banana"</span><span class="p">,</span> <span class="s2">"Yellow"</span><span class="p">,</span> <span class="mf">3.30</span><span class="p">)</span>
+        <span class="k">new</span> <span class="nx">Fruit</span><span class="p">(</span><span class="dl">"</span><span class="s2">Apple</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Green</span><span class="dl">"</span><span class="p">,</span> <span class="mf">3.50</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nx">Fruit</span><span class="p">(</span><span class="dl">"</span><span class="s2">Orange</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Orange</span><span class="dl">"</span><span class="p">,</span> <span class="mf">3.40</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nx">Fruit</span><span class="p">(</span><span class="dl">"</span><span class="s2">Banana</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Yellow</span><span class="dl">"</span><span class="p">,</span> <span class="mf">3.30</span><span class="p">)</span>
     <span class="p">]);</span>
 <span class="p">}</span>
 
